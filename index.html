@@ -1,75 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Cajun Cravings</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-:root {
+:root{
   --purple:#5A189A;
   --gold:#F4C430;
   --green:#2ECC71;
-  --dark:#0e0e0e;
+  --dark:#0f0f0f;
 }
 
-* {
+*{
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family:'Poppins',sans-serif;
+  font-family:Poppins, sans-serif;
 }
 
-body {
-  background: var(--dark);
+body{
+  background:var(--dark);
   color:#eee;
-  overflow-x:hidden;
 }
 
-/* 🎭 MARDI GRAS OVERLAY */
-body::before {
+/* subtle Mardi Gras texture */
+body::before{
   content:"";
   position:fixed;
   inset:0;
   background:
-    radial-gradient(circle at 20% 20%, rgba(90,24,154,0.15), transparent 40%),
-    radial-gradient(circle at 80% 30%, rgba(244,196,48,0.12), transparent 40%),
-    radial-gradient(circle at 50% 80%, rgba(46,204,113,0.10), transparent 40%);
+    radial-gradient(circle at 20% 20%, rgba(90,24,154,0.12), transparent 40%),
+    radial-gradient(circle at 80% 30%, rgba(244,196,48,0.10), transparent 40%),
+    radial-gradient(circle at 50% 80%, rgba(46,204,113,0.08), transparent 40%);
   pointer-events:none;
 }
 
-/* 🎉 FLOATING BEADS ANIMATION */
-.beads {
-  position:fixed;
-  width:100%;
-  height:100%;
-  top:0;
-  left:0;
-  overflow:hidden;
-  z-index:0;
-}
-
-.bead {
-  position:absolute;
-  width:8px;
-  height:8px;
-  border-radius:50%;
-  animation: float 12s linear infinite;
-  opacity:0.4;
-}
-
-.bead:nth-child(odd){background:var(--gold);}
-.bead:nth-child(even){background:var(--purple);}
-
-@keyframes float {
-  from {transform:translateY(100vh);}
-  to {transform:translateY(-10vh);}
-}
-
 /* NAV */
-header {
+header{
   position:fixed;
   width:100%;
   display:flex;
@@ -79,18 +50,20 @@ header {
   backdrop-filter: blur(10px);
 }
 
-header h1 {
+header h1{
   color:var(--gold);
+  font-size:20px;
 }
 
-nav a {
+nav a{
   margin-left:20px;
   color:#ccc;
   text-decoration:none;
+  font-size:14px;
 }
 
 /* HERO */
-.hero {
+.hero{
   height:100vh;
   display:flex;
   align-items:center;
@@ -100,123 +73,125 @@ nav a {
   background:url('https://images.unsplash.com/photo-1604908176997-431b5e5a3b9f?q=80&w=2000') center/cover no-repeat;
 }
 
-.hero::after {
+.hero::after{
   content:"";
   position:absolute;
   inset:0;
-  background:rgba(0,0,0,0.65);
+  background:rgba(0,0,0,0.6);
 }
 
-.hero-content {
+.hero-content{
   position:relative;
   z-index:2;
+  max-width:700px;
 }
 
-.hero h2 {
-  font-size:65px;
+.hero h2{
+  font-size:60px;
   color:var(--gold);
 }
 
-.hero p {
+.hero p{
+  margin-top:10px;
   color:#ddd;
-  margin:10px 0;
 }
 
-.btn {
-  background:var(--purple);
+.btn{
+  margin-top:20px;
+  display:inline-block;
   padding:14px 28px;
   border-radius:30px;
-  display:inline-block;
+  background:var(--purple);
   color:white;
   text-decoration:none;
-  margin-top:15px;
 }
 
 /* SECTION */
-.section {
+.section{
   padding:80px 40px;
-  position:relative;
-  z-index:2;
+}
+
+.section h2{
+  margin-bottom:25px;
 }
 
 /* TRUST */
-.trust {
+.trust{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:20px;
-  text-align:center;
+  gap:15px;
 }
 
-.trust div {
+.trust div{
   background:#1a1a1a;
-  padding:20px;
+  padding:18px;
   border-left:3px solid var(--gold);
+  font-size:14px;
 }
 
 /* MENU */
-.menu {
+.menu{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
   gap:20px;
 }
 
-.card {
-  background:#1a1a1a;
-  padding:15px;
+.card{
+  background:#161616;
   border-radius:10px;
+  overflow:hidden;
 }
 
-.card img {
+.card img{
   width:100%;
   height:180px;
   object-fit:cover;
-  border-radius:10px;
 }
 
-select, button {
+.card-content{
+  padding:15px;
+}
+
+.price{
+  color:var(--gold);
+  margin:5px 0;
+}
+
+select, button{
   width:100%;
-  margin-top:10px;
   padding:10px;
+  margin-top:8px;
+  border-radius:6px;
+  border:none;
 }
 
-button {
+button{
   background:var(--gold);
-  border:none;
+  font-weight:600;
   cursor:pointer;
-  font-weight:bold;
 }
 
 /* CART */
-.cart {
-  background:#111;
+.cart{
+  background:#141414;
   padding:20px;
-  margin-top:20px;
+  border-radius:10px;
 }
 
-/* MOBILE */
 @media(max-width:768px){
-  .hero h2 {font-size:40px;}
-  header {padding:15px;}
+  .hero h2{font-size:40px;}
+  header{padding:15px 20px;}
 }
 </style>
 </head>
 
 <body>
 
-<!-- BEADS -->
-<div class="beads">
-  <div class="bead" style="left:10%; animation-delay:0s;"></div>
-  <div class="bead" style="left:30%; animation-delay:2s;"></div>
-  <div class="bead" style="left:50%; animation-delay:4s;"></div>
-  <div class="bead" style="left:70%; animation-delay:1s;"></div>
-  <div class="bead" style="left:90%; animation-delay:3s;"></div>
-</div>
-
 <header>
   <h1>Cajun Cravings</h1>
   <nav>
     <a href="#menu">Menu</a>
-    <a href="#trust">Trust</a>
+    <a href="#trust">Why Us</a>
     <a href="#cart">Cart</a>
   </nav>
 </header>
@@ -225,53 +200,57 @@ button {
 <section class="hero">
   <div class="hero-content">
     <h2>Taste the Bayou</h2>
-    <p>Fresh crawfish • Boudin balls • Real Louisiana heat</p>
+    <p>Fresh crawfish • Boudin balls • Real Louisiana flavor, made daily</p>
     <a class="btn" href="#menu">Order Now</a>
   </div>
 </section>
 
 <!-- TRUST -->
 <section class="section" id="trust">
-  <h2>🔥 Why Cajun Cravings</h2><br>
+  <h2>Why People Love Us</h2>
   <div class="trust">
-    <div>🦞 Fresh Boiled Daily</div>
-    <div>🌶️ Custom Spice Levels</div>
-    <div>📍 Local Louisiana Style Cooking</div>
-    <div>🥘 Made Fresh, Never Frozen</div>
+    <div>🦞 Fresh cooked daily</div>
+    <div>🌶️ Custom spice levels</div>
+    <div>📍 Louisiana-style recipes</div>
+    <div>🥘 Never frozen ingredients</div>
   </div>
 </section>
 
 <!-- MENU -->
 <section class="section" id="menu">
-  <h2>🍽️ Menu</h2><br>
+  <h2>Menu</h2>
 
   <div class="menu">
 
     <div class="card">
       <img src="https://images.unsplash.com/photo-1604908176997-431b5e5a3b9f">
-      <h3>Crawfish Boil</h3>
-      <p>$25</p>
+      <div class="card-content">
+        <h3>Crawfish Boil</h3>
+        <div class="price">$25</div>
 
-      <select>
-        <option>Spice: Mild</option>
-        <option>Spice: Medium</option>
-        <option>Spice: Hot 🔥</option>
-      </select>
+        <select>
+          <option>Mild</option>
+          <option>Medium</option>
+          <option>Hot 🔥</option>
+        </select>
 
-      <button onclick="addToCart('Crawfish Boil',25)">Add to Cart</button>
+        <button onclick="add('Crawfish Boil',25)">Add to Cart</button>
+      </div>
     </div>
 
     <div class="card">
       <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092">
-      <h3>Boudin Balls</h3>
-      <p>$12</p>
+      <div class="card-content">
+        <h3>Boudin Balls</h3>
+        <div class="price">$12</div>
 
-      <select>
-        <option>6 Pieces</option>
-        <option>12 Pieces</option>
-      </select>
+        <select>
+          <option>6 pack</option>
+          <option>12 pack</option>
+        </select>
 
-      <button onclick="addToCart('Boudin Balls',12)">Add to Cart</button>
+        <button onclick="add('Boudin Balls',12)">Add to Cart</button>
+      </div>
     </div>
 
   </div>
@@ -279,42 +258,41 @@ button {
 
 <!-- CART -->
 <section class="section" id="cart">
-  <h2>🛒 Your Cart</h2>
-  <div class="cart" id="cartBox">
-    <p>No items yet.</p>
-  </div>
+  <h2>Your Cart</h2>
+  <div class="cart" id="cartBox">Empty</div>
 
   <br>
-  <button onclick="checkout()" class="btn">Checkout (Stripe Ready)</button>
+  <a class="btn" href="#" onclick="checkout()">Checkout (Stripe Ready)</a>
 </section>
 
 <script>
 let cart = [];
 
-function addToCart(item, price){
-  cart.push({item, price});
-  renderCart();
+function add(name, price){
+  cart.push({name, price});
+  render();
 }
 
-function renderCart(){
-  let box = document.getElementById("cartBox");
+function render(){
+  const box = document.getElementById("cartBox");
 
   if(cart.length === 0){
-    box.innerHTML = "<p>No items yet.</p>";
+    box.innerHTML = "Empty";
     return;
   }
 
   let total = 0;
-  box.innerHTML = cart.map(c => {
-    total += c.price;
-    return `<p>${c.item} - $${c.price}</p>`;
+
+  box.innerHTML = cart.map(i=>{
+    total += i.price;
+    return `<p>${i.name} - $${i.price}</p>`;
   }).join("");
 
-  box.innerHTML += `<hr><p><b>Total: $${total}</b></p>`;
+  box.innerHTML += `<hr><b>Total: $${total}</b>`;
 }
 
 function checkout(){
-  alert("Connect Stripe here → ready for payments integration");
+  alert("Next step: connect Stripe checkout link");
 }
 </script>
 
