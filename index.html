@@ -48,504 +48,13 @@ const reviews = [
   },
 ];
 
-const theme = {
-  black: "#050604",
-  ink: "#071010",
-  teal: "#082b33",
-  teal2: "#031d22",
-  gold: "#c79a3d",
-  gold2: "#e2c46f",
-  parchment: "#f0d99b",
-  cream: "#fff0c8",
-  red: "#9c2418",
-  red2: "#5d130d",
-};
+const money = (value) => `$${value.toFixed(2)}`;
 
-const styles = {
-  page: {
-    minHeight: "100vh",
-    background: `linear-gradient(180deg, ${theme.black}, ${theme.teal2} 32%, ${theme.black} 100%)`,
-    color: theme.parchment,
-    fontFamily: "Georgia, 'Times New Roman', serif",
-  },
-  texture: {
-    position: "fixed",
-    inset: 0,
-    pointerEvents: "none",
-    opacity: 0.16,
-    backgroundImage:
-      "radial-gradient(circle at 20% 15%, rgba(199,154,61,0.22) 0, transparent 22%), radial-gradient(circle at 80% 45%, rgba(156,36,24,0.16) 0, transparent 25%), linear-gradient(45deg, rgba(255,255,255,0.05) 25%, transparent 25%)",
-    backgroundSize: "100% 100%, 100% 100%, 8px 8px",
-    zIndex: 0,
-  },
-  frame: {
-    position: "relative",
-    zIndex: 1,
-    maxWidth: 1280,
-    margin: "0 auto",
-    borderLeft: `1px solid ${theme.gold}55`,
-    borderRight: `1px solid ${theme.gold}55`,
-    background: "rgba(0,0,0,0.18)",
-  },
-  nav: {
-    position: "sticky",
-    top: 0,
-    zIndex: 50,
-    display: "grid",
-    gridTemplateColumns: "auto 1fr auto",
-    alignItems: "center",
-    minHeight: 104,
-    padding: "0 42px",
-    background: "rgba(5,6,4,0.94)",
-    borderTop: `2px solid ${theme.gold}`,
-    borderBottom: `2px solid ${theme.gold}`,
-    boxShadow: "0 18px 45px rgba(0,0,0,0.45)",
-  },
-  logo: {
-    width: 115,
-    height: 115,
-    objectFit: "contain",
-    display: "block",
-    justifySelf: "start",
-    background: "transparent",
-  },
-  logoBadge: {
-    width: 86,
-    height: 86,
-    borderRadius: "50%",
-    border: `2px solid ${theme.gold}`,
-    background: `radial-gradient(circle, ${theme.parchment} 0%, ${theme.gold} 44%, ${theme.teal} 46%, ${theme.black} 100%)`,
-    color: theme.cream,
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    boxShadow: "0 10px 24px rgba(0,0,0,0.55)",
-    lineHeight: 1,
-  },
-  logoFleur: {
-    color: theme.gold2,
-    fontSize: 22,
-    marginBottom: 4,
-  },
-  logoText: {
-    fontFamily: "Arial, sans-serif",
-    fontSize: 9,
-    fontWeight: 800,
-    letterSpacing: "0.12em",
-    textAlign: "center",
-  },
-  navLinks: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    gap: 38,
-    fontFamily: "Arial, sans-serif",
-    textTransform: "uppercase",
-    letterSpacing: "0.16em",
-    fontSize: 14,
-    fontWeight: 700,
-  },
-  navLink: {
-    color: theme.parchment,
-    textDecoration: "none",
-  },
-  cartButton: {
-    border: `2px solid ${theme.gold}`,
-    background: "transparent",
-    color: theme.parchment,
-    padding: "16px 24px",
-    cursor: "pointer",
-    fontFamily: "Arial, sans-serif",
-    fontSize: 14,
-    fontWeight: 800,
-    letterSpacing: "0.12em",
-    textTransform: "uppercase",
-  },
-  hero: {
-    position: "relative",
-    minHeight: 575,
-    display: "grid",
-    gridTemplateColumns: "1fr 1fr",
-    overflow: "hidden",
-    borderBottom: `2px solid ${theme.gold}`,
-    background: "linear-gradient(90deg, rgba(3,22,26,0.95), rgba(4,11,10,0.84))",
-  },
-  heroBayou: {
-    position: "absolute",
-    inset: 0,
-    opacity: 0.32,
-    backgroundImage:
-      "url(https://images.unsplash.com/photo-1562967916-eb82221dfb92?auto=format&fit=crop&w=1600&q=80)",
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-  },
-  heroLeft: {
-    position: "relative",
-    zIndex: 2,
-    padding: "122px 48px 70px 68px",
-  },
-  heroRight: {
-    position: "relative",
-    minHeight: 540,
-  },
-  crawfishHero: {
-    position: "absolute",
-    inset: "0 0 0 auto",
-    width: "100%",
-    height: "100%",
-    objectFit: "cover",
-    filter: "saturate(1.25) contrast(1.1)",
-  },
-  heroFade: {
-    position: "absolute",
-    inset: 0,
-    background: "linear-gradient(90deg, rgba(5,6,4,0.95) 0%, rgba(5,6,4,0.4) 42%, rgba(5,6,4,0.08) 100%)",
-  },
-  heroTitle: {
-    margin: 0,
-    maxWidth: 590,
-    color: theme.parchment,
-    fontSize: "clamp(52px, 7vw, 88px)",
-    lineHeight: 0.92,
-    letterSpacing: "0.04em",
-    textTransform: "uppercase",
-    textShadow: "0 4px 0 rgba(0,0,0,0.45)",
-  },
-  ornamentalLine: {
-    display: "flex",
-    alignItems: "center",
-    gap: 18,
-    margin: "28px 0",
-  },
-  line: {
-    height: 2,
-    width: 175,
-    background: theme.gold,
-  },
-  fleur: {
-    color: theme.gold,
-    fontSize: 28,
-  },
-  heroText: {
-    maxWidth: 440,
-    margin: 0,
-    color: theme.cream,
-    fontFamily: "Arial, sans-serif",
-    fontSize: 21,
-    lineHeight: 1.55,
-  },
-  redButton: {
-    display: "inline-flex",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: 10,
-    marginTop: 30,
-    border: `2px solid ${theme.gold}`,
-    background: `linear-gradient(180deg, ${theme.red}, ${theme.red2})`,
-    color: theme.parchment,
-    padding: "16px 38px",
-    cursor: "pointer",
-    boxShadow: `inset 0 0 0 1px ${theme.gold}55, 0 10px 24px rgba(0,0,0,0.35)`,
-    fontFamily: "Georgia, 'Times New Roman', serif",
-    fontWeight: 800,
-    fontSize: 18,
-    textTransform: "uppercase",
-    letterSpacing: "0.08em",
-  },
-  sectionTitle: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: 18,
-    padding: "22px 24px 10px",
-    color: theme.gold2,
-    fontSize: "clamp(30px, 4vw, 42px)",
-    lineHeight: 1,
-    textAlign: "center",
-    textTransform: "uppercase",
-    letterSpacing: "0.08em",
-  },
-  titleLine: {
-    width: 110,
-    height: 2,
-    background: theme.gold,
-  },
-  productGrid: {
-    display: "grid",
-    gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
-    gap: 28,
-    padding: "28px 64px 56px",
-    borderBottom: `2px solid ${theme.gold}`,
-  },
-  productCard: {
-    position: "relative",
-    minHeight: 360,
-    padding: "18px 18px 24px",
-    border: `2px solid ${theme.gold}`,
-    background: `radial-gradient(circle at top, ${theme.teal} 0%, ${theme.ink} 70%)`,
-    textAlign: "center",
-    boxShadow: "0 20px 45px rgba(0,0,0,0.35)",
-    transition: "transform 0.25s ease, box-shadow 0.25s ease",
-  },
-  productImg: {
-    width: "100%",
-    height: 172,
-    objectFit: "cover",
-    border: `1px solid ${theme.gold}77`,
-    filter: "saturate(1.1) contrast(1.05)",
-  },
-  productName: {
-    minHeight: 52,
-    margin: "18px 0 4px",
-    color: theme.gold2,
-    fontSize: 20,
-    lineHeight: 1.1,
-    textTransform: "uppercase",
-    letterSpacing: "0.05em",
-  },
-  productSub: {
-    margin: 0,
-    color: theme.cream,
-    fontFamily: "Arial, sans-serif",
-    fontSize: 13,
-  },
-  price: {
-    margin: "10px 0 0",
-    color: theme.parchment,
-    fontSize: 22,
-    fontWeight: 800,
-  },
-  smallRedButton: {
-    width: "100%",
-    marginTop: 14,
-    border: `2px solid ${theme.gold}`,
-    background: `linear-gradient(180deg, ${theme.red}, ${theme.red2})`,
-    color: theme.parchment,
-    padding: "11px 10px",
-    cursor: "pointer",
-    fontFamily: "Georgia, 'Times New Roman', serif",
-    fontSize: 15,
-    fontWeight: 800,
-    textTransform: "uppercase",
-    letterSpacing: "0.05em",
-  },
-  story: {
-    position: "relative",
-    display: "grid",
-    gridTemplateColumns: "1fr 1.1fr",
-    minHeight: 330,
-    borderBottom: `2px solid ${theme.gold}`,
-    overflow: "hidden",
-    background: theme.ink,
-  },
-  storyLeft: {
-    position: "relative",
-    zIndex: 2,
-    padding: "54px 64px",
-  },
-  storyImage: {
-    position: "absolute",
-    inset: "0 0 0 auto",
-    width: "58%",
-    height: "100%",
-    objectFit: "cover",
-    opacity: 0.72,
-  },
-  storyOverlay: {
-    position: "absolute",
-    inset: 0,
-    background: "linear-gradient(90deg, rgba(5,6,4,1) 0%, rgba(5,6,4,0.82) 46%, rgba(5,6,4,0.15) 100%)",
-  },
-  paragraph: {
-    color: theme.cream,
-    fontFamily: "Arial, sans-serif",
-    fontSize: 17,
-    lineHeight: 1.65,
-  },
-  reviews: {
-    display: "grid",
-    gridTemplateColumns: "repeat(3, 1fr)",
-    gap: 28,
-    padding: "28px 64px 42px",
-  },
-  reviewCard: {
-    border: `2px solid ${theme.gold}`,
-    background: `linear-gradient(180deg, rgba(8,43,51,0.72), rgba(5,6,4,0.75))`,
-    padding: "26px 28px",
-    textAlign: "center",
-  },
-  stars: {
-    color: theme.gold2,
-    fontSize: 22,
-    letterSpacing: "0.12em",
-  },
-  reviewText: {
-    color: theme.cream,
-    fontFamily: "Arial, sans-serif",
-    fontSize: 16,
-    lineHeight: 1.6,
-  },
-  ctaStrip: {
-    display: "grid",
-    gridTemplateColumns: "1fr auto",
-    alignItems: "center",
-    gap: 24,
-    margin: "0 64px 28px",
-    padding: "30px 42px",
-    border: `2px solid ${theme.gold}`,
-    background: `linear-gradient(90deg, ${theme.teal2}, ${theme.ink})`,
-  },
-  ctaTitle: {
-    margin: 0,
-    color: theme.gold2,
-    fontSize: "clamp(32px, 4vw, 46px)",
-    textTransform: "uppercase",
-    letterSpacing: "0.1em",
-  },
-  footer: {
-    display: "grid",
-    gridTemplateColumns: "160px 1fr 1fr 1.2fr",
-    gap: 36,
-    padding: "36px 64px",
-    borderTop: `2px solid ${theme.gold}`,
-    background: "rgba(0,0,0,0.55)",
-  },
-  footerLogo: {
-    width: 120,
-    height: 120,
-    objectFit: "contain",
-  },
-  footerTitle: {
-    color: theme.gold2,
-    fontSize: 17,
-    textTransform: "uppercase",
-    letterSpacing: "0.08em",
-    margin: "0 0 12px",
-  },
-  footerText: {
-    margin: "7px 0",
-    color: theme.cream,
-    fontFamily: "Arial, sans-serif",
-    fontSize: 14,
-  },
-  input: {
-    width: "100%",
-    boxSizing: "border-box",
-    border: `1px solid ${theme.gold}`,
-    background: "rgba(0,0,0,0.48)",
-    color: theme.cream,
-    padding: "13px 14px",
-    fontFamily: "Arial, sans-serif",
-    fontSize: 14,
-    marginTop: 10,
-  },
-  overlay: {
-    position: "fixed",
-    inset: 0,
-    zIndex: 80,
-    background: "rgba(0,0,0,0.72)",
-    border: "none",
-  },
-  cart: {
-    position: "fixed",
-    top: 0,
-    right: 0,
-    bottom: 0,
-    width: 380,
-    maxWidth: "94vw",
-    zIndex: 90,
-    background: `linear-gradient(180deg, ${theme.teal2}, ${theme.black})`,
-    borderLeft: `2px solid ${theme.gold}`,
-    padding: 26,
-    boxSizing: "border-box",
-    display: "flex",
-    flexDirection: "column",
-    color: theme.parchment,
-  },
-  close: {
-    alignSelf: "flex-end",
-    border: "none",
-    background: "transparent",
-    color: theme.gold2,
-    fontSize: 32,
-    cursor: "pointer",
-  },
-  cartItem: {
-    padding: "18px 0",
-    borderBottom: `1px solid ${theme.gold}55`,
-  },
-  cartRow: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    gap: 14,
-  },
-  qty: {
-    display: "flex",
-    alignItems: "center",
-    gap: 12,
-    border: `1px solid ${theme.gold}`,
-    padding: "6px 12px",
-  },
-  miniButton: {
-    border: "none",
-    background: "transparent",
-    color: theme.cream,
-    cursor: "pointer",
-    fontSize: 18,
-  },
-  modal: {
-    position: "fixed",
-    inset: 0,
-    zIndex: 100,
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    padding: 24,
-    background: "rgba(0,0,0,0.76)",
-  },
-  modalBox: {
-    width: 560,
-    maxWidth: "95vw",
-    border: `2px solid ${theme.gold}`,
-    background: `linear-gradient(180deg, ${theme.teal2}, ${theme.black})`,
-    padding: 30,
-    boxSizing: "border-box",
-  },
-  formGrid: {
-    display: "grid",
-    gridTemplateColumns: "1fr 1fr",
-    gap: 14,
-  },
-  full: {
-    gridColumn: "1 / -1",
-  },
-};
-
-function SectionTitle({ children }) {
-  return (
-    <div style={styles.sectionTitle}>
-      <span style={styles.titleLine} />
-      <span>⚓ {children} ⚓</span>
-      <span style={styles.titleLine} />
-    </div>
-  );
-}
-
-function App() {
+export default function App() {
   const [cart, setCart] = useState([]);
   const [cartOpen, setCartOpen] = useState(false);
   const [checkoutOpen, setCheckoutOpen] = useState(false);
   const [orderPlaced, setOrderPlaced] = useState(false);
-  const [customer, setCustomer] = useState({
-    name: "",
-    phone: "",
-    email: "",
-    date: "",
-    time: "",
-    notes: "",
-  });
 
   const cartCount = useMemo(
     () => cart.reduce((sum, item) => sum + item.qty, 0),
@@ -560,10 +69,12 @@ function App() {
   const addToCart = (product) => {
     setCart((current) => {
       const existing = current.find((item) => item.id === product.id);
-      if (!existing) return [...current, { ...product, qty: 1 }];
-      return current.map((item) =>
-        item.id === product.id ? { ...item, qty: item.qty + 1 } : item
-      );
+      if (existing) {
+        return current.map((item) =>
+          item.id === product.id ? { ...item, qty: item.qty + 1 } : item
+        );
+      }
+      return [...current, { ...product, qty: 1 }];
     });
     setCartOpen(true);
   };
@@ -590,92 +101,590 @@ function App() {
     setCartOpen(false);
   };
 
+  const finishOrder = () => {
+    setOrderPlaced(false);
+    setCheckoutOpen(false);
+  };
+
   return (
-    <div style={styles.page}>
+    <div className="site">
       <style>{`
+        :root {
+          --black: #050604;
+          --ink: #071010;
+          --teal: #082b33;
+          --teal2: #031d22;
+          --gold: #c79a3d;
+          --gold2: #e2c46f;
+          --parchment: #f0d99b;
+          --cream: #fff0c8;
+          --red: #9c2418;
+          --red2: #5d130d;
+        }
+
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { margin: 0; }
+
+        .site {
+          min-height: 100vh;
+          background: linear-gradient(180deg, var(--black), var(--teal2) 32%, var(--black) 100%);
+          color: var(--parchment);
+          font-family: Georgia, 'Times New Roman', serif;
+          position: relative;
+        }
+
+        .site::before {
+          content: "";
+          position: fixed;
+          inset: 0;
+          pointer-events: none;
+          opacity: 0.16;
+          background-image:
+            radial-gradient(circle at 20% 15%, rgba(199,154,61,0.22) 0, transparent 22%),
+            radial-gradient(circle at 80% 45%, rgba(156,36,24,0.16) 0, transparent 25%),
+            linear-gradient(45deg, rgba(255,255,255,0.05) 25%, transparent 25%);
+          background-size: 100% 100%, 100% 100%, 8px 8px;
+          z-index: 0;
+        }
+
+        .frame {
+          position: relative;
+          z-index: 1;
+          max-width: 1280px;
+          margin: 0 auto;
+          border-left: 1px solid rgba(199,154,61,0.35);
+          border-right: 1px solid rgba(199,154,61,0.35);
+          background: rgba(0,0,0,0.18);
+        }
+
+        nav {
+          position: sticky;
+          top: 0;
+          z-index: 50;
+          display: grid;
+          grid-template-columns: auto 1fr auto;
+          align-items: center;
+          min-height: 104px;
+          padding: 0 42px;
+          background: rgba(5,6,4,0.94);
+          border-top: 2px solid var(--gold);
+          border-bottom: 2px solid var(--gold);
+          box-shadow: 0 18px 45px rgba(0,0,0,0.45);
+        }
+
+        .logo {
+          width: 115px;
+          height: 115px;
+          object-fit: contain;
+          display: block;
+          background: transparent;
+        }
+
+        .nav-links {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 38px;
+          font-family: Arial, sans-serif;
+          text-transform: uppercase;
+          letter-spacing: 0.16em;
+          font-size: 14px;
+          font-weight: 700;
+        }
+
+        .nav-links a {
+          color: var(--parchment);
+          text-decoration: none;
+        }
+
+        .nav-links a:hover { color: var(--gold2); }
+
+        button {
+          cursor: pointer;
+          font-family: Georgia, 'Times New Roman', serif;
+        }
+
+        button:hover { filter: brightness(1.12); }
+
+        .cart-button {
+          border: 2px solid var(--gold);
+          background: transparent;
+          color: var(--parchment);
+          padding: 16px 24px;
+          font-family: Arial, sans-serif;
+          font-size: 14px;
+          font-weight: 800;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+        }
+
+        .hero {
+          position: relative;
+          min-height: 575px;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          overflow: hidden;
+          border-bottom: 2px solid var(--gold);
+          background: linear-gradient(90deg, rgba(3,22,26,0.95), rgba(4,11,10,0.84));
+        }
+
+        .hero::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          opacity: 0.32;
+          background-image: url('https://images.unsplash.com/photo-1562967916-eb82221dfb92?auto=format&fit=crop&w=1600&q=80');
+          background-size: cover;
+          background-position: center;
+        }
+
+        .hero-left {
+          position: relative;
+          z-index: 2;
+          padding: 122px 48px 70px 68px;
+        }
+
+        .hero-right {
+          position: relative;
+          min-height: 540px;
+        }
+
+        .hero-food {
+          position: absolute;
+          inset: 0 0 0 auto;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          filter: saturate(1.25) contrast(1.1);
+        }
+
+        .hero-fade {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(90deg, rgba(5,6,4,0.95) 0%, rgba(5,6,4,0.4) 42%, rgba(5,6,4,0.08) 100%);
+        }
+
+        h1 {
+          margin: 0;
+          max-width: 590px;
+          color: var(--parchment);
+          font-size: clamp(52px, 7vw, 88px);
+          line-height: 0.92;
+          letter-spacing: 0.04em;
+          text-transform: uppercase;
+          text-shadow: 0 4px 0 rgba(0,0,0,0.45);
+        }
+
+        .ornamental-line {
+          display: flex;
+          align-items: center;
+          gap: 18px;
+          margin: 28px 0;
+        }
+
+        .line { height: 2px; width: 175px; background: var(--gold); }
+        .fleur { color: var(--gold); font-size: 28px; }
+
+        .hero-text {
+          max-width: 440px;
+          margin: 0;
+          color: var(--cream);
+          font-family: Arial, sans-serif;
+          font-size: 21px;
+          line-height: 1.55;
+        }
+
+        .red-button {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          margin-top: 30px;
+          border: 2px solid var(--gold);
+          background: linear-gradient(180deg, var(--red), var(--red2));
+          color: var(--parchment);
+          padding: 16px 38px;
+          box-shadow: inset 0 0 0 1px rgba(199,154,61,0.35), 0 10px 24px rgba(0,0,0,0.35);
+          font-weight: 800;
+          font-size: 18px;
+          text-transform: uppercase;
+          letter-spacing: 0.08em;
+        }
+
+        .section-title {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 18px;
+          padding: 22px 24px 10px;
+          color: var(--gold2);
+          font-size: clamp(30px, 4vw, 42px);
+          line-height: 1;
+          text-align: center;
+          text-transform: uppercase;
+          letter-spacing: 0.08em;
+        }
+
+        .section-title::before,
+        .section-title::after {
+          content: "";
+          width: 110px;
+          height: 2px;
+          background: var(--gold);
+        }
+
+        .product-grid {
+          display: grid;
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+          gap: 28px;
+          padding: 28px 64px 56px;
+          border-bottom: 2px solid var(--gold);
+        }
+
+        .product-card {
+          position: relative;
+          min-height: 360px;
+          padding: 18px 18px 24px;
+          border: 2px solid var(--gold);
+          background: radial-gradient(circle at top, var(--teal) 0%, var(--ink) 70%);
+          text-align: center;
+          box-shadow: 0 20px 45px rgba(0,0,0,0.35);
+          transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
         .product-card:hover {
           transform: translateY(-10px) scale(1.02);
           box-shadow: 0 28px 70px rgba(0,0,0,0.55), 0 0 18px rgba(199,154,61,0.35), 0 0 2px rgba(199,154,61,0.6);
         }
-        .product-card:hover button {
-          filter: brightness(1.15);
+
+        .product-card img {
+          width: 100%;
+          height: 172px;
+          object-fit: cover;
+          border: 1px solid rgba(199,154,61,0.5);
+          filter: saturate(1.1) contrast(1.05);
         }
-        
-        html { scroll-behavior: smooth; }
-        button:hover { filter: brightness(1.12); }
-        a:hover { color: #e2c46f !important; }
+
+        .product-card h3 {
+          min-height: 52px;
+          margin: 18px 0 4px;
+          color: var(--gold2);
+          font-size: 20px;
+          line-height: 1.1;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+        }
+
+        .product-card p {
+          margin: 0;
+          color: var(--cream);
+          font-family: Arial, sans-serif;
+          font-size: 13px;
+        }
+
+        .price {
+          margin: 10px 0 0 !important;
+          color: var(--parchment) !important;
+          font-size: 22px !important;
+          font-weight: 800;
+        }
+
+        .small-red-button {
+          width: 100%;
+          margin-top: 14px;
+          border: 2px solid var(--gold);
+          background: linear-gradient(180deg, var(--red), var(--red2));
+          color: var(--parchment);
+          padding: 11px 10px;
+          font-size: 15px;
+          font-weight: 800;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+        }
+
+        .story {
+          position: relative;
+          display: grid;
+          grid-template-columns: 1fr 1.1fr;
+          min-height: 330px;
+          border-bottom: 2px solid var(--gold);
+          overflow: hidden;
+          background: var(--ink);
+        }
+
+        .story img {
+          position: absolute;
+          inset: 0 0 0 auto;
+          width: 58%;
+          height: 100%;
+          object-fit: cover;
+          opacity: 0.72;
+        }
+
+        .story::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(90deg, rgba(5,6,4,1) 0%, rgba(5,6,4,0.82) 46%, rgba(5,6,4,0.15) 100%);
+        }
+
+        .story-left {
+          position: relative;
+          z-index: 2;
+          padding: 54px 64px;
+        }
+
+        .paragraph {
+          color: var(--cream);
+          font-family: Arial, sans-serif;
+          font-size: 17px;
+          line-height: 1.65;
+        }
+
+        .reviews {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 28px;
+          padding: 28px 64px 42px;
+        }
+
+        .review-card {
+          border: 2px solid var(--gold);
+          background: linear-gradient(180deg, rgba(8,43,51,0.72), rgba(5,6,4,0.75));
+          padding: 26px 28px;
+          text-align: center;
+        }
+
+        .stars {
+          color: var(--gold2);
+          font-size: 22px;
+          letter-spacing: 0.12em;
+        }
+
+        .review-text {
+          color: var(--cream);
+          font-family: Arial, sans-serif;
+          font-size: 16px;
+          line-height: 1.6;
+        }
+
+        .cta-strip {
+          display: grid;
+          grid-template-columns: 1fr auto;
+          align-items: center;
+          gap: 24px;
+          margin: 0 64px 28px;
+          padding: 30px 42px;
+          border: 2px solid var(--gold);
+          background: linear-gradient(90deg, var(--teal2), var(--ink));
+        }
+
+        .cta-strip h2 {
+          margin: 0;
+          color: var(--gold2);
+          font-size: clamp(32px, 4vw, 46px);
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
+        }
+
+        footer {
+          display: grid;
+          grid-template-columns: 160px 1fr 1fr 1.2fr;
+          gap: 36px;
+          padding: 36px 64px;
+          border-top: 2px solid var(--gold);
+          background: rgba(0,0,0,0.55);
+        }
+
+        footer img {
+          width: 120px;
+          height: 120px;
+          object-fit: contain;
+        }
+
+        footer h4 {
+          color: var(--gold2);
+          font-size: 17px;
+          text-transform: uppercase;
+          letter-spacing: 0.08em;
+          margin: 0 0 12px;
+        }
+
+        footer p {
+          margin: 7px 0;
+          color: var(--cream);
+          font-family: Arial, sans-serif;
+          font-size: 14px;
+        }
+
+        input, textarea {
+          width: 100%;
+          border: 1px solid var(--gold);
+          background: rgba(0,0,0,0.48);
+          color: var(--cream);
+          padding: 13px 14px;
+          font-family: Arial, sans-serif;
+          font-size: 14px;
+          margin-top: 10px;
+        }
+
+        .overlay {
+          position: fixed;
+          inset: 0;
+          z-index: 80;
+          background: rgba(0,0,0,0.72);
+          border: none;
+        }
+
+        .cart {
+          position: fixed;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          width: 380px;
+          max-width: 94vw;
+          z-index: 90;
+          background: linear-gradient(180deg, var(--teal2), var(--black));
+          border-left: 2px solid var(--gold);
+          padding: 26px;
+          display: flex;
+          flex-direction: column;
+          color: var(--parchment);
+        }
+
+        .close {
+          align-self: flex-end;
+          border: none;
+          background: transparent;
+          color: var(--gold2);
+          font-size: 32px;
+        }
+
+        .cart-item {
+          padding: 18px 0;
+          border-bottom: 1px solid rgba(199,154,61,0.35);
+        }
+
+        .cart-row {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 14px;
+        }
+
+        .qty {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          border: 1px solid var(--gold);
+          padding: 6px 12px;
+        }
+
+        .mini-button {
+          border: none;
+          background: transparent;
+          color: var(--cream);
+          font-size: 18px;
+        }
+
+        .modal {
+          position: fixed;
+          inset: 0;
+          z-index: 100;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 24px;
+          background: rgba(0,0,0,0.76);
+        }
+
+        .modal-box {
+          width: 560px;
+          max-width: 95vw;
+          border: 2px solid var(--gold);
+          background: linear-gradient(180deg, var(--teal2), var(--black));
+          padding: 30px;
+        }
+
+        .form-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 14px;
+        }
+
+        .full { grid-column: 1 / -1; }
+
         @media (max-width: 900px) {
-          nav { grid-template-columns: 90px 1fr !important; padding: 10px 16px !important; }
-          nav img { width: 82px !important; height: 82px !important; }
-          nav div:nth-of-type(1) { display: none !important; }
-          .hero-grid { grid-template-columns: 1fr !important; }
-          .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; padding: 24px !important; }
-          .reviews-grid { grid-template-columns: 1fr !important; padding: 24px !important; }
-          .footer-grid { grid-template-columns: 1fr !important; }
-          .cta-strip { grid-template-columns: 1fr !important; margin: 0 24px 28px !important; }
+          nav { grid-template-columns: 90px 1fr; padding: 10px 16px; }
+          .logo { width: 82px; height: 82px; }
+          .nav-links { display: none; }
+          .hero { grid-template-columns: 1fr; }
+          .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 24px; }
+          .reviews { grid-template-columns: 1fr; padding: 24px; }
+          footer { grid-template-columns: 1fr; }
+          .cta-strip { grid-template-columns: 1fr; margin: 0 24px 28px; }
         }
+
         @media (max-width: 580px) {
-          .product-grid { grid-template-columns: 1fr !important; }
-          .form-grid { grid-template-columns: 1fr !important; }
+          .product-grid { grid-template-columns: 1fr; }
+          .form-grid { grid-template-columns: 1fr; }
         }
       `}</style>
 
-      <div style={styles.texture} />
-
-      <div style={styles.frame}>
-        <nav style={styles.nav}>
-          <img src={LOGO_SRC} alt="Cajun Cravings logo" style={styles.logo} />
-
-          <div style={styles.navLinks}>
-            <a href="#home" style={styles.navLink}>Home</a>
-            <a href="#shop" style={styles.navLink}>Shop</a>
-            <a href="#story" style={styles.navLink}>Our Story</a>
-            <a href="#reviews" style={styles.navLink}>Reviews</a>
-            <a href="#contact" style={styles.navLink}>Contact</a>
+      <div className="frame">
+        <nav>
+          <img src={LOGO_SRC} alt="Cajun Cravings logo" className="logo" />
+          <div className="nav-links">
+            <a href="#home">Home</a>
+            <a href="#shop">Shop</a>
+            <a href="#story">Our Story</a>
+            <a href="#reviews">Reviews</a>
+            <a href="#contact">Contact</a>
           </div>
-
-          <button type="button" style={styles.cartButton} onClick={() => setCartOpen(true)}>
+          <button className="cart-button" onClick={() => setCartOpen(true)}>
             🛒 Cart ({cartCount})
           </button>
         </nav>
 
-        <section id="home" className="hero-grid" style={styles.hero}>
-          <div style={styles.heroBayou} />
-          <div style={styles.heroLeft}>
-            <h1 style={styles.heroTitle}>Bold Flavor. Cajun Soul.</h1>
-            <div style={styles.ornamentalLine}>
-              <span style={styles.line} />
-              <span style={styles.fleur}>⚜</span>
-              <span style={styles.line} />
+        <section id="home" className="hero">
+          <div className="hero-left">
+            <h1>Bold Flavor. Cajun Soul.</h1>
+            <div className="ornamental-line">
+              <span className="line" />
+              <span className="fleur">⚜</span>
+              <span className="line" />
             </div>
-            <p style={styles.heroText}>
+            <p className="hero-text">
               Homemade crawfish boudin balls made to bring the bayou straight to your table.
             </p>
-            <button type="button" style={styles.redButton} onClick={() => document.getElementById("shop")?.scrollIntoView()}>
+            <button
+              className="red-button"
+              onClick={() => document.getElementById("shop")?.scrollIntoView()}
+            >
               Shop Now ⚜
             </button>
           </div>
-
-          <div style={styles.heroRight}>
+          <div className="hero-right">
             <img
+              className="hero-food"
               src="https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?auto=format&fit=crop&w=1200&q=80"
               alt="Cajun fried food platter"
-              style={styles.crawfishHero}
             />
-            <div style={styles.heroFade} />
+            <div className="hero-fade" />
           </div>
         </section>
 
         <section id="shop">
-          <SectionTitle>Shop Our Favorites</SectionTitle>
-          <div className="product-grid" style={styles.productGrid}>
+          <div className="section-title">⚓ Shop Our Favorites ⚓</div>
+          <div className="product-grid">
             {products.map((product) => (
-              <article key={product.id} className="product-card" style={styles.productCard}>
-                <img src={product.img} alt={product.name} style={styles.productImg} />
-                <h3 style={styles.productName}>{product.name}</h3>
-                <p style={styles.productSub}>{product.subtitle}</p>
-                <p style={styles.price}>${product.price.toFixed(2)}</p>
-                <button type="button" style={styles.smallRedButton} onClick={() => addToCart(product)}>
+              <article className="product-card" key={product.id}>
+                <img src={product.img} alt={product.name} />
+                <h3>{product.name}</h3>
+                <p>{product.subtitle}</p>
+                <p className="price">{money(product.price)}</p>
+                <button className="small-red-button" onClick={() => addToCart(product)}>
                   Add to Cart ⚜
                 </button>
               </article>
@@ -683,117 +692,122 @@ function App() {
           </div>
         </section>
 
-        <section id="story" style={styles.story}>
+        <section id="story" className="story">
           <img
             src="https://images.unsplash.com/photo-1604909052743-94e838986d24?auto=format&fit=crop&w=1400&q=80"
             alt="Cajun fried food spread"
-            style={styles.storyImage}
           />
-          <div style={styles.storyOverlay} />
-          <div style={styles.storyLeft}>
-            <SectionTitle>Our Story</SectionTitle>
-            <p style={styles.paragraph}>
-              Cajun Cravings was born from family recipes, weekend boils, and the kind of food people ask about before they even leave the driveway. Every order is handmade with crawfish, rice, seasoning, and real louisiana pride.
+          <div className="story-left">
+            <div className="section-title">⚓ Our Story ⚓</div>
+            <p className="paragraph">
+              Cajun Cravings was born from family recipes, weekend boils, and the kind of food people ask about before they even leave the driveway. Every order is handmade with crawfish, rice, seasoning, and real Louisiana pride.
             </p>
-            <button type="button" style={styles.redButton} onClick={() => document.getElementById("shop")?.scrollIntoView()}>
+            <button
+              className="red-button"
+              onClick={() => document.getElementById("shop")?.scrollIntoView()}
+            >
               Order Yours ⚜
             </button>
           </div>
         </section>
 
         <section id="reviews">
-          <SectionTitle>What Our Customers Say</SectionTitle>
-          <div className="reviews-grid" style={styles.reviews}>
+          <div className="section-title">⚓ What Our Customers Say ⚓</div>
+          <div className="reviews">
             {reviews.map((review) => (
-              <article key={review.name} style={styles.reviewCard}>
-                <div style={styles.stars}>★★★★★</div>
-                <p style={styles.reviewText}>“{review.text}”</p>
-                <p style={{ ...styles.reviewText, color: theme.gold2 }}>— {review.name}</p>
+              <article className="review-card" key={review.name}>
+                <div className="stars">★★★★★</div>
+                <p className="review-text">“{review.text}”</p>
+                <p className="review-text" style={{ color: "var(--gold2)" }}>
+                  — {review.name}
+                </p>
               </article>
             ))}
           </div>
         </section>
 
-        <section className="cta-strip" style={styles.ctaStrip}>
+        <section className="cta-strip">
           <div>
-            <h2 style={styles.ctaTitle}>Bring the Bayou Home</h2>
-            <p style={{ ...styles.paragraph, margin: "10px 0 0" }}>
-              Authentic flavor. Handmade batches. Made with Cajun pride.
-            </p>
+            <h2>Bring the Bayou Home</h2>
+            <p className="paragraph">Authentic flavor. Handmade batches. Made with Cajun pride.</p>
           </div>
-          <button type="button" style={styles.redButton} onClick={() => setCartOpen(true)}>
+          <button className="red-button" onClick={() => setCartOpen(true)}>
             View Cart ⚜
           </button>
         </section>
 
-        <footer id="contact" className="footer-grid" style={styles.footer}>
-          <img src={LOGO_SRC} alt="Cajun Cravings logo" style={styles.footerLogo} />
-
+        <footer id="contact">
+          <img src={LOGO_SRC} alt="Cajun Cravings logo" />
           <div>
-            <h4 style={styles.footerTitle}>Quick Links</h4>
-            <p style={styles.footerText}>Shop</p>
-            <p style={styles.footerText}>Our Story</p>
-            <p style={styles.footerText}>Reviews</p>
-            <p style={styles.footerText}>Contact</p>
+            <h4>Quick Links</h4>
+            <p>Shop</p>
+            <p>Our Story</p>
+            <p>Reviews</p>
+            <p>Contact</p>
           </div>
-
           <div>
-            <h4 style={styles.footerTitle}>Customer Care</h4>
-            <p style={styles.footerText}>Pickup Scheduling</p>
-            <p style={styles.footerText}>Special Orders</p>
-            <p style={styles.footerText}>Catering Requests</p>
-            <p style={styles.footerText}>FAQs</p>
+            <h4>Customer Care</h4>
+            <p>Pickup Scheduling</p>
+            <p>Special Orders</p>
+            <p>Catering Requests</p>
+            <p>FAQs</p>
           </div>
-
           <div>
-            <h4 style={styles.footerTitle}>Stay Connected</h4>
-            <p style={styles.footerText}>Subscribe for batch drops, pickup windows, and specials.</p>
-            <input style={styles.input} placeholder="Enter your email" />
+            <h4>Stay Connected</h4>
+            <p>Subscribe for batch drops, pickup windows, and specials.</p>
+            <input placeholder="Enter your email" />
           </div>
         </footer>
       </div>
 
       {cartOpen && (
         <>
-          <button type="button" style={styles.overlay} onClick={() => setCartOpen(false)} aria-label="Close cart" />
-          <aside style={styles.cart}>
-            <button type="button" style={styles.close} onClick={() => setCartOpen(false)}>×</button>
-            <h2 style={{ ...styles.ctaTitle, fontSize: 34 }}>Your Cart</h2>
-
+          <button className="overlay" onClick={() => setCartOpen(false)} aria-label="Close cart" />
+          <aside className="cart">
+            <button className="close" onClick={() => setCartOpen(false)}>
+              ×
+            </button>
+            <h2>YOUR CART</h2>
             <div style={{ flex: 1, overflowY: "auto" }}>
               {cart.length === 0 ? (
-                <p style={styles.paragraph}>Your cart is empty.</p>
+                <p className="paragraph">Your cart is empty.</p>
               ) : (
                 cart.map((item) => (
-                  <div key={item.id} style={styles.cartItem}>
-                    <div style={styles.cartRow}>
+                  <div className="cart-item" key={item.id}>
+                    <div className="cart-row">
                       <strong>{item.name}</strong>
-                      <button type="button" style={styles.miniButton} onClick={() => removeItem(item.id)}>×</button>
+                      <button className="mini-button" onClick={() => removeItem(item.id)}>
+                        ×
+                      </button>
                     </div>
-                    <p style={{ ...styles.footerText, margin: "8px 0" }}>${item.price.toFixed(2)} each</p>
-                    <div style={styles.cartRow}>
-                      <div style={styles.qty}>
-                        <button type="button" style={styles.miniButton} onClick={() => updateQty(item.id, -1)}>-</button>
+                    <p>{money(item.price)} each</p>
+                    <div className="cart-row">
+                      <div className="qty">
+                        <button className="mini-button" onClick={() => updateQty(item.id, -1)}>
+                          -
+                        </button>
                         <span>{item.qty}</span>
-                        <button type="button" style={styles.miniButton} onClick={() => updateQty(item.id, 1)}>+</button>
+                        <button className="mini-button" onClick={() => updateQty(item.id, 1)}>
+                          +
+                        </button>
                       </div>
-                      <strong>${(item.price * item.qty).toFixed(2)}</strong>
+                      <strong>{money(item.price * item.qty)}</strong>
                     </div>
                   </div>
                 ))
               )}
             </div>
-
-            <div style={{ borderTop: `1px solid ${theme.gold}66`, paddingTop: 18 }}>
-              <div style={styles.cartRow}>
+            <div style={{ borderTop: "1px solid rgba(199,154,61,0.35)", paddingTop: 18 }}>
+              <div className="cart-row">
                 <strong>Total</strong>
-                <strong>${cartTotal.toFixed(2)}</strong>
+                <strong>{money(cartTotal)}</strong>
               </div>
               <button
-                type="button"
-                style={{ ...styles.redButton, width: "100%", marginTop: 18 }}
-                onClick={() => setCheckoutOpen(true)}
-                disabled={cart.length === 0}
+                className="red-button"
+                style={{ width: "100%" }}
+                onClick={() => {
+                  if (cart.length > 0) setCheckoutOpen(true);
+                }}
               >
                 Checkout ⚜
               </button>
@@ -803,38 +817,33 @@ function App() {
       )}
 
       {checkoutOpen && (
-        <div style={styles.modal}>
-          <form style={styles.modalBox} onSubmit={placeOrder}>
-            <button type="button" style={styles.close} onClick={() => setCheckoutOpen(false)}>×</button>
-            <h2 style={{ ...styles.ctaTitle, fontSize: 34, marginTop: 0 }}>Pickup Order</h2>
-
+        <div className="modal">
+          <form className="modal-box" onSubmit={placeOrder}>
+            <button type="button" className="close" onClick={() => setCheckoutOpen(false)}>
+              ×
+            </button>
+            <h2>PICKUP ORDER</h2>
             {orderPlaced ? (
               <div>
-                <p style={styles.paragraph}>Order received. Your pickup request has been saved for review.</p>
-                <button
-                  type="button"
-                  style={styles.redButton}
-                  onClick={() => {
-                    setOrderPlaced(false);
-                    setCheckoutOpen(false);
-                    setCustomer({ name: "", phone: "", email: "", date: "", time: "", notes: "" });
-                  }}
-                >
+                <p className="paragraph">Order received. Your pickup request has been saved for review.</p>
+                <button type="button" className="red-button" onClick={finishOrder}>
                   Done
                 </button>
               </div>
             ) : (
               <>
-                <div className="form-grid" style={styles.formGrid}>
-                  <input required style={styles.input} placeholder="Name" value={customer.name} onChange={(e) => setCustomer({ ...customer, name: e.target.value })} />
-                  <input required style={styles.input} placeholder="Phone" value={customer.phone} onChange={(e) => setCustomer({ ...customer, phone: e.target.value })} />
-                  <input style={{ ...styles.input, ...styles.full }} placeholder="Email" value={customer.email} onChange={(e) => setCustomer({ ...customer, email: e.target.value })} />
-                  <input required type="date" style={styles.input} value={customer.date} onChange={(e) => setCustomer({ ...customer, date: e.target.value })} />
-                  <input required type="time" style={styles.input} value={customer.time} onChange={(e) => setCustomer({ ...customer, time: e.target.value })} />
-                  <textarea style={{ ...styles.input, ...styles.full, minHeight: 100 }} placeholder="Order notes" value={customer.notes} onChange={(e) => setCustomer({ ...customer, notes: e.target.value })} />
+                <div className="form-grid">
+                  <input required placeholder="Name" />
+                  <input required placeholder="Phone" />
+                  <input className="full" placeholder="Email" />
+                  <input required type="date" />
+                  <input required type="time" />
+                  <textarea className="full" placeholder="Order notes" style={{ minHeight: 100 }} />
                 </div>
-                <p style={styles.paragraph}>Total: ${cartTotal.toFixed(2)}</p>
-                <button type="submit" style={styles.redButton}>Place Pickup Order ⚜</button>
+                <p className="paragraph">Total: {money(cartTotal)}</p>
+                <button className="red-button" type="submit">
+                  Place Pickup Order ⚜
+                </button>
               </>
             )}
           </form>
@@ -843,5 +852,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
