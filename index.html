@@ -4,53 +4,1118 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cajun Cravings</title>
+
   <style>
-    :root{--black:#050604;--ink:#071010;--teal:#082b33;--teal2:#031d22;--gold:#c79a3d;--gold2:#e2c46f;--parchment:#f0d99b;--cream:#fff0c8;--red:#9c2418;--red2:#5d130d}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(180deg,var(--black),var(--teal2) 32%,var(--black));color:var(--parchment);font-family:Georgia,'Times New Roman',serif}body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.16;background-image:radial-gradient(circle at 20% 15%,rgba(199,154,61,.22) 0,transparent 22%),radial-gradient(circle at 80% 45%,rgba(156,36,24,.16) 0,transparent 25%),linear-gradient(45deg,rgba(255,255,255,.05) 25%,transparent 25%);background-size:100% 100%,100% 100%,8px 8px;z-index:0}.frame{position:relative;z-index:1;max-width:1280px;margin:0 auto;border-left:1px solid rgba(199,154,61,.35);border-right:1px solid rgba(199,154,61,.35);background:rgba(0,0,0,.18)}nav{position:sticky;top:0;z-index:50;display:grid;grid-template-columns:auto 1fr auto;align-items:center;min-height:104px;padding:0 42px;background:rgba(5,6,4,.94);border-top:2px solid var(--gold);border-bottom:2px solid var(--gold);box-shadow:0 18px 45px rgba(0,0,0,.45)}.logo{width:160px;height:auto;object-fit:contain;display:block;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.6)) contrast(1.05) saturate(1.05)}.nav-links{display:flex;justify-content:center;align-items:center;gap:38px;font-family:Arial,sans-serif;text-transform:uppercase;letter-spacing:.16em;font-size:14px;font-weight:700}.nav-links a{color:var(--parchment);text-decoration:none}.nav-links a:hover{color:var(--gold2)}button{cursor:pointer;font-family:Georgia,'Times New Roman',serif}button:hover{filter:brightness(1.12)}.cart-button{border:2px solid var(--gold);background:transparent;color:var(--parchment);padding:16px 24px;font-family:Arial,sans-serif;font-size:14px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}.hero{position:relative;min-height:680px;display:block;overflow:hidden;border-bottom:2px solid var(--gold);background:#050604 url('pic1.jpg') center/cover no-repeat}.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,6,4,.9) 0%,rgba(5,6,4,.68) 34%,rgba(5,6,4,.15) 70%,rgba(5,6,4,.05) 100%)}.hero-left{position:relative;z-index:2;padding:130px 48px 86px 68px;max-width:640px}.hero-right{display:none}.hero-food{display:none}.hero-fade{display:none}h1{margin:0;max-width:620px;color:var(--parchment);font-size:clamp(64px,8vw,104px);line-height:.88;letter-spacing:.04em;text-transform:uppercase;text-shadow:0 5px 0 rgba(0,0,0,.48),0 0 22px rgba(0,0,0,.55)}.ornamental-line{display:flex;align-items:center;gap:18px;margin:28px 0}.line{height:2px;width:175px;background:var(--gold)}.fleur{color:var(--gold);font-size:28px}.hero-text{max-width:440px;margin:0;color:var(--cream);font-family:Arial,sans-serif;font-size:21px;line-height:1.55}.red-button{display:inline-flex;align-items:center;justify-content:center;gap:10px;margin-top:30px;border:2px solid var(--gold);background:linear-gradient(180deg,var(--red),var(--red2));color:var(--parchment);padding:16px 38px;box-shadow:inset 0 0 0 1px rgba(199,154,61,.35),0 10px 24px rgba(0,0,0,.35);font-weight:800;font-size:18px;text-transform:uppercase;letter-spacing:.08em}.section-title{display:flex;align-items:center;justify-content:center;gap:18px;padding:22px 24px 10px;color:var(--gold2);font-size:clamp(30px,4vw,42px);line-height:1;text-align:center;text-transform:uppercase;letter-spacing:.08em}.section-title:before,.section-title:after{content:"";width:110px;height:2px;background:var(--gold)}.product-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px;padding:28px 64px 56px;border-bottom:2px solid var(--gold)}.product-card{position:relative;min-height:360px;padding:18px 18px 24px;border:2px solid var(--gold);background:radial-gradient(circle at top,var(--teal),var(--ink) 70%);text-align:center;box-shadow:0 20px 45px rgba(0,0,0,.35);transition:transform .25s ease,box-shadow .25s ease}.product-card:hover{transform:translateY(-10px) scale(1.02);box-shadow:0 28px 70px rgba(0,0,0,.55),0 0 18px rgba(199,154,61,.35),0 0 2px rgba(199,154,61,.6)}.product-card img{width:100%;height:172px;object-fit:cover;border:1px solid rgba(199,154,61,.5);filter:saturate(1.1) contrast(1.05)}.product-card h3{min-height:52px;margin:18px 0 4px;color:var(--gold2);font-size:20px;line-height:1.1;text-transform:uppercase;letter-spacing:.05em}.product-card p{margin:0;color:var(--cream);font-family:Arial,sans-serif;font-size:13px}.price{margin:10px 0 0!important;color:var(--parchment)!important;font-size:22px!important;font-weight:800}.availability{display:inline-block;margin:12px 0 0;padding:7px 10px;border:1px solid rgba(199,154,61,.65);color:var(--gold2);font-family:Arial,sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:.12em}.availability.sold-out{border-color:rgba(156,36,24,.85);color:#ffb1a8}.small-red-button{width:100%;margin-top:14px;border:2px solid var(--gold);background:linear-gradient(180deg,var(--red),var(--red2));color:var(--parchment);padding:11px 10px;font-size:15px;font-weight:800;text-transform:uppercase;letter-spacing:.05em}.small-red-button:disabled{cursor:not-allowed;opacity:.45;filter:grayscale(.35);background:#30221d;color:#b8a67b}.story{position:relative;display:grid;grid-template-columns:1fr 1.1fr;min-height:330px;border-bottom:2px solid var(--gold);overflow:hidden;background:var(--ink)}.story img{position:absolute;inset:0 0 0 auto;width:58%;height:100%;object-fit:cover;opacity:.72}.story:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,6,4,1) 0%,rgba(5,6,4,.82) 46%,rgba(5,6,4,.15) 100%)}.story-left{position:relative;z-index:2;padding:54px 64px}.paragraph{color:var(--cream);font-family:Arial,sans-serif;font-size:17px;line-height:1.65}.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;padding:28px 64px 42px}.review-card{border:2px solid var(--gold);background:linear-gradient(180deg,rgba(8,43,51,.72),rgba(5,6,4,.75));padding:26px 28px;text-align:center}.stars{color:var(--gold2);font-size:22px;letter-spacing:.12em}.review-text{color:var(--cream);font-family:Arial,sans-serif;font-size:16px;line-height:1.6}.cta-strip{display:grid;grid-template-columns:1fr auto;align-items:center;gap:24px;margin:0 64px 28px;padding:30px 42px;border:2px solid var(--gold);background:linear-gradient(90deg,var(--teal2),var(--ink))}.cta-strip h2{margin:0;color:var(--gold2);font-size:clamp(32px,4vw,46px);text-transform:uppercase;letter-spacing:.1em}footer{display:grid;grid-template-columns:160px 1fr 1fr 1.2fr;gap:36px;padding:36px 64px;border-top:2px solid var(--gold);background:rgba(0,0,0,.55)}footer img{width:120px;height:120px;object-fit:contain}footer h4{color:var(--gold2);font-size:17px;text-transform:uppercase;letter-spacing:.08em;margin:0 0 12px}footer p{margin:7px 0;color:var(--cream);font-family:Arial,sans-serif;font-size:14px}input,textarea,select{width:100%;border:1px solid var(--gold);background:rgba(0,0,0,.48);color:var(--cream);padding:13px 14px;font-family:Arial,sans-serif;font-size:14px;margin-top:10px}select option{background:var(--black);color:var(--cream)}.overlay{position:fixed;inset:0;z-index:80;background:rgba(0,0,0,.72);border:none;display:none}.cart{position:fixed;top:0;right:0;bottom:0;width:380px;max-width:94vw;z-index:90;background:linear-gradient(180deg,var(--teal2),var(--black));border-left:2px solid var(--gold);padding:26px;display:none;flex-direction:column;color:var(--parchment)}.cart.open{display:flex}.overlay.open{display:block}.close{align-self:flex-end;border:none;background:transparent;color:var(--gold2);font-size:32px}.cart-item{padding:18px 0;border-bottom:1px solid rgba(199,154,61,.35)}.cart-row{display:flex;align-items:center;justify-content:space-between;gap:14px}.qty{display:flex;align-items:center;gap:12px;border:1px solid var(--gold);padding:6px 12px}.mini-button{border:none;background:transparent;color:var(--cream);font-size:18px}.modal{position:fixed;inset:0;z-index:100;display:none;align-items:flex-start;justify-content:center;padding:24px;background:rgba(0,0,0,.76);overflow-y:auto}.modal.open{display:flex}.modal-box{position:relative;width:560px;max-width:95vw;max-height:calc(100vh - 48px);overflow-y:auto;border:2px solid var(--gold);background:linear-gradient(180deg,var(--teal2),var(--black));padding:30px;margin:auto 0;-ms-overflow-style:none;scrollbar-width:none}.modal-box::-webkit-scrollbar{display:none}.modal-box>.close{position:sticky;top:0;z-index:3;float:right;background:rgba(5,6,4,.85);border:1px solid rgba(199,154,61,.45);line-height:1;padding:4px 10px;margin:-12px -12px 8px 12px}.payment-links{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}.payment-link{display:flex;align-items:center;justify-content:center;border:2px solid var(--gold);background:rgba(0,0,0,.35);color:var(--parchment);padding:13px 14px;text-decoration:none;font-weight:800;text-transform:uppercase;letter-spacing:.08em}.payment-link:hover{filter:brightness(1.15)}.pickup-note{border:1px solid rgba(199,154,61,.55);background:rgba(0,0,0,.28);padding:14px;margin:0 0 14px;color:var(--cream);font-family:Arial,sans-serif;font-size:14px;line-height:1.55}.delivery-row{grid-column:1/-1;border:1px solid rgba(199,154,61,.45);background:rgba(0,0,0,.22);padding:12px;margin-top:10px}.delivery-label{display:flex;align-items:center;gap:10px;color:var(--cream);font-family:Arial,sans-serif;font-size:14px}.delivery-label input{width:auto;margin:0}.delivery-address{grid-column:1/-1;display:none}.delivery-note{grid-column:1/-1;display:none;border:1px solid rgba(199,154,61,.55);background:rgba(156,36,24,.18);color:var(--cream);padding:10px 12px;margin-top:10px;font-family:Arial,sans-serif;font-size:13px;line-height:1.45}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.full{grid-column:1/-1}@media(max-width:900px){body{overflow-x:hidden}.frame{border-left:none;border-right:none}nav{grid-template-columns:auto auto;justify-content:space-between;gap:12px;min-height:82px;padding:10px 14px}.logo{width:104px;height:auto}.nav-links{display:none}.cart-button{padding:11px 14px;font-size:12px;letter-spacing:.08em}.hero{min-height:620px;background-position:center right}.hero-left{padding:72px 22px 52px}.hero-right{display:none}.hero-food{display:none}.hero-fade{display:none}h1{font-size:clamp(42px,13vw,64px);line-height:.96}.hero-text{font-size:17px}.ornamental-line{gap:12px;margin:22px 0}.line{width:88px}.red-button{width:100%;padding:14px 18px;font-size:15px}.section-title{font-size:28px;gap:10px;padding:28px 16px 8px}.section-title:before,.section-title:after{width:40px}.product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;padding:20px 14px 42px}.product-card{min-height:auto;padding:14px}.product-card:hover{transform:none}.product-card img{height:150px}.product-card h3{min-height:auto;font-size:17px}.reviews{grid-template-columns:1fr;padding:20px 14px 36px}.story{grid-template-columns:1fr;min-height:auto}.story img{position:relative;width:100%;height:260px;opacity:.55}.story-left{padding:34px 20px}.cta-strip{grid-template-columns:1fr;margin:0 14px 28px;padding:24px 18px}.cta-strip h2{font-size:30px}footer{grid-template-columns:1fr;gap:22px;padding:30px 20px;text-align:center}footer img{margin:0 auto}.cart{width:100vw;max-width:100vw;padding:20px}.modal{align-items:flex-start;overflow-y:auto;padding:12px}.modal-box{width:100%;max-width:100%;max-height:none;padding:22px 18px;margin:12px 0}.modal-box>.close{margin:-6px -4px 8px 10px}.payment-links{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}}@media(max-width:580px){.product-grid{grid-template-columns:1fr}.product-card img{height:190px}.logo{width:96px}.cart-button{padding:10px 12px;font-size:11px}.hero-left{padding:46px 18px 34px}.hero{min-height:560px;background-position:center}.hero-right,.hero-food{height:0;min-height:0}.section-title{font-size:24px;letter-spacing:.04em}.section-title:before,.section-title:after{display:none}.paragraph{font-size:15px}.small-red-button{font-size:14px}.modal-box h2,.cart h2{font-size:26px}}
+    /* ===============================
+       THEME COLORS
+       =============================== */
+    :root {
+      --black: #050604;
+      --ink: #071010;
+      --teal: #082b33;
+      --teal2: #031d22;
+      --gold: #c79a3d;
+      --gold2: #e2c46f;
+      --parchment: #f0d99b;
+      --cream: #fff0c8;
+      --red: #9c2418;
+      --red2: #5d130d;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: linear-gradient(180deg, var(--black), var(--teal2) 32%, var(--black));
+      color: var(--parchment);
+      font-family: Georgia, 'Times New Roman', serif;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.16;
+      background-image:
+        radial-gradient(circle at 20% 15%, rgba(199,154,61,.22) 0, transparent 22%),
+        radial-gradient(circle at 80% 45%, rgba(156,36,24,.16) 0, transparent 25%),
+        linear-gradient(45deg, rgba(255,255,255,.05) 25%, transparent 25%);
+      background-size: 100% 100%, 100% 100%, 8px 8px;
+      z-index: 0;
+    }
+
+    .frame {
+      position: relative;
+      z-index: 1;
+      max-width: 1280px;
+      margin: 0 auto;
+      border-left: 1px solid rgba(199,154,61,.35);
+      border-right: 1px solid rgba(199,154,61,.35);
+      background: rgba(0,0,0,.18);
+    }
+
+    /* ===============================
+       NAVIGATION
+       =============================== */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      min-height: 104px;
+      padding: 0 42px;
+      background: rgba(5,6,4,.94);
+      border-top: 2px solid var(--gold);
+      border-bottom: 2px solid var(--gold);
+      box-shadow: 0 18px 45px rgba(0,0,0,.45);
+    }
+
+    .logo {
+      width: 160px;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,.6)) contrast(1.05) saturate(1.05);
+    }
+
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 38px;
+      font-family: Arial, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .nav-links a {
+      color: var(--parchment);
+      text-decoration: none;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold2);
+    }
+
+    button {
+      cursor: pointer;
+      font-family: Georgia, 'Times New Roman', serif;
+    }
+
+    button:hover {
+      filter: brightness(1.12);
+    }
+
+    .cart-button {
+      border: 2px solid var(--gold);
+      background: transparent;
+      color: var(--parchment);
+      padding: 16px 24px;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    /* ===============================
+       HERO
+       =============================== */
+    .hero {
+      position: relative;
+      min-height: 680px;
+      display: block;
+      overflow: hidden;
+      border-bottom: 2px solid var(--gold);
+      background: #050604 url('pic1.jpg') center/cover no-repeat;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        90deg,
+        rgba(5,6,4,.9) 0%,
+        rgba(5,6,4,.68) 34%,
+        rgba(5,6,4,.15) 70%,
+        rgba(5,6,4,.05) 100%
+      );
+    }
+
+    .hero-left {
+      position: relative;
+      z-index: 2;
+      max-width: 640px;
+      padding: 130px 48px 86px 68px;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 620px;
+      color: var(--parchment);
+      font-size: clamp(64px, 8vw, 104px);
+      line-height: .88;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      text-shadow: 0 5px 0 rgba(0,0,0,.48), 0 0 22px rgba(0,0,0,.55);
+    }
+
+    .ornamental-line {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin: 28px 0;
+    }
+
+    .line {
+      width: 175px;
+      height: 2px;
+      background: var(--gold);
+    }
+
+    .fleur {
+      color: var(--gold);
+      font-size: 28px;
+    }
+
+    .hero-text {
+      max-width: 440px;
+      margin: 0;
+      color: var(--cream);
+      font-family: Arial, sans-serif;
+      font-size: 21px;
+      line-height: 1.55;
+    }
+
+    .red-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 30px;
+      border: 2px solid var(--gold);
+      background: linear-gradient(180deg, var(--red), var(--red2));
+      color: var(--parchment);
+      padding: 16px 38px;
+      box-shadow: inset 0 0 0 1px rgba(199,154,61,.35), 0 10px 24px rgba(0,0,0,.35);
+      font-weight: 800;
+      font-size: 18px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    /* ===============================
+       SHARED SECTIONS
+       =============================== */
+    .section-title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      padding: 22px 24px 10px;
+      color: var(--gold2);
+      font-size: clamp(30px, 4vw, 42px);
+      line-height: 1;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .section-title::before,
+    .section-title::after {
+      content: "";
+      width: 110px;
+      height: 2px;
+      background: var(--gold);
+    }
+
+    .paragraph {
+      color: var(--cream);
+      font-family: Arial, sans-serif;
+      font-size: 17px;
+      line-height: 1.65;
+    }
+
+    /* ===============================
+       SHOP
+       =============================== */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 28px;
+      padding: 28px 64px 56px;
+      border-bottom: 2px solid var(--gold);
+    }
+
+    .product-card {
+      position: relative;
+      min-height: 360px;
+      padding: 18px 18px 24px;
+      border: 2px solid var(--gold);
+      background: radial-gradient(circle at top, var(--teal), var(--ink) 70%);
+      text-align: center;
+      box-shadow: 0 20px 45px rgba(0,0,0,.35);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 28px 70px rgba(0,0,0,.55), 0 0 18px rgba(199,154,61,.35), 0 0 2px rgba(199,154,61,.6);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 172px;
+      object-fit: cover;
+      border: 1px solid rgba(199,154,61,.5);
+      filter: saturate(1.1) contrast(1.05);
+    }
+
+    .product-card h3 {
+      min-height: 52px;
+      margin: 18px 0 4px;
+      color: var(--gold2);
+      font-size: 20px;
+      line-height: 1.1;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+
+    .product-card p {
+      margin: 0;
+      color: var(--cream);
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+    }
+
+    .price {
+      margin: 10px 0 0 !important;
+      color: var(--parchment) !important;
+      font-size: 22px !important;
+      font-weight: 800;
+    }
+
+    .availability {
+      display: inline-block;
+      margin: 12px 0 0;
+      padding: 7px 10px;
+      border: 1px solid rgba(199,154,61,.65);
+      color: var(--gold2);
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+    }
+
+    .availability.sold-out {
+      border-color: rgba(156,36,24,.85);
+      color: #ffb1a8;
+    }
+
+    .small-red-button {
+      width: 100%;
+      margin-top: 14px;
+      border: 2px solid var(--gold);
+      background: linear-gradient(180deg, var(--red), var(--red2));
+      color: var(--parchment);
+      padding: 11px 10px;
+      font-size: 15px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+
+    .small-red-button:disabled {
+      cursor: not-allowed;
+      opacity: .45;
+      filter: grayscale(.35);
+      background: #30221d;
+      color: #b8a67b;
+    }
+
+    /* ===============================
+       STORY
+       =============================== */
+    .story {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      min-height: 330px;
+      overflow: hidden;
+      border-bottom: 2px solid var(--gold);
+      background: var(--ink);
+    }
+
+    .story img {
+      position: absolute;
+      inset: 0 0 0 auto;
+      width: 58%;
+      height: 100%;
+      object-fit: cover;
+      opacity: .72;
+    }
+
+    .story::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(5,6,4,1) 0%, rgba(5,6,4,.82) 46%, rgba(5,6,4,.15) 100%);
+    }
+
+    .story-left {
+      position: relative;
+      z-index: 2;
+      padding: 54px 64px;
+    }
+
+    /* ===============================
+       SURVEY
+       =============================== */
+    .survey-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+      padding: 28px 64px 42px;
+    }
+
+    .survey-card {
+      border: 2px solid var(--gold);
+      background: linear-gradient(180deg, rgba(8,43,51,.72), rgba(5,6,4,.75));
+      padding: 26px 28px;
+      text-align: left;
+    }
+
+    .survey-card h3 {
+      margin-top: 0;
+      color: var(--gold2);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .survey-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 10px;
+      color: var(--cream);
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+    }
+
+    .survey-option input {
+      width: auto;
+      margin: 0;
+    }
+
+    /* ===============================
+       CTA / FOOTER
+       =============================== */
+    .cta-strip {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 24px;
+      margin: 0 64px 28px;
+      padding: 30px 42px;
+      border: 2px solid var(--gold);
+      background: linear-gradient(90deg, var(--teal2), var(--ink));
+    }
+
+    .cta-strip h2 {
+      margin: 0;
+      color: var(--gold2);
+      font-size: clamp(32px, 4vw, 46px);
+      text-transform: uppercase;
+      letter-spacing: .1em;
+    }
+
+    footer {
+      display: grid;
+      grid-template-columns: 160px 1fr 1fr 1.2fr;
+      gap: 36px;
+      padding: 36px 64px;
+      border-top: 2px solid var(--gold);
+      background: rgba(0,0,0,.55);
+    }
+
+    footer img {
+      width: 120px;
+      height: 120px;
+      object-fit: contain;
+    }
+
+    footer h4 {
+      margin: 0 0 12px;
+      color: var(--gold2);
+      font-size: 17px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    footer p {
+      margin: 7px 0;
+      color: var(--cream);
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      margin-top: 10px;
+      border: 1px solid var(--gold);
+      background: rgba(0,0,0,.48);
+      color: var(--cream);
+      padding: 13px 14px;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+    }
+
+    select option {
+      background: var(--black);
+      color: var(--cream);
+    }
+
+    /* ===============================
+       CART + CHECKOUT MODAL
+       =============================== */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 80;
+      display: none;
+      border: none;
+      background: rgba(0,0,0,.72);
+    }
+
+    .overlay.open {
+      display: block;
+    }
+
+    .cart {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 90;
+      display: none;
+      flex-direction: column;
+      width: 380px;
+      max-width: 94vw;
+      padding: 26px;
+      border-left: 2px solid var(--gold);
+      background: linear-gradient(180deg, var(--teal2), var(--black));
+      color: var(--parchment);
+    }
+
+    .cart.open {
+      display: flex;
+    }
+
+    .close {
+      align-self: flex-end;
+      border: none;
+      background: transparent;
+      color: var(--gold2);
+      font-size: 32px;
+    }
+
+    .cart-item {
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(199,154,61,.35);
+    }
+
+    .cart-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .qty {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border: 1px solid var(--gold);
+      padding: 6px 12px;
+    }
+
+    .mini-button {
+      border: none;
+      background: transparent;
+      color: var(--cream);
+      font-size: 18px;
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: none;
+      align-items: flex-start;
+      justify-content: center;
+      overflow-y: auto;
+      padding: 24px;
+      background: rgba(0,0,0,.76);
+    }
+
+    .modal.open {
+      display: flex;
+    }
+
+    .modal-box {
+      position: relative;
+      width: 560px;
+      max-width: 95vw;
+      max-height: calc(100vh - 48px);
+      overflow-y: auto;
+      margin: auto 0;
+      border: 2px solid var(--gold);
+      background: linear-gradient(180deg, var(--teal2), var(--black));
+      padding: 30px;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    .modal-box::-webkit-scrollbar {
+      display: none;
+    }
+
+    .modal-box > .close {
+      position: sticky;
+      top: 0;
+      z-index: 3;
+      float: right;
+      margin: -12px -12px 8px 12px;
+      border: 1px solid rgba(199,154,61,.45);
+      background: rgba(5,6,4,.85);
+      line-height: 1;
+      padding: 4px 10px;
+    }
+
+    .payment-links {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .payment-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--gold);
+      background: rgba(0,0,0,.35);
+      color: var(--parchment);
+      padding: 13px 14px;
+      text-decoration: none;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .pickup-note {
+      border: 1px solid rgba(199,154,61,.55);
+      background: rgba(0,0,0,.28);
+      padding: 14px;
+      margin: 0 0 14px;
+      color: var(--cream);
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .delivery-row {
+      grid-column: 1 / -1;
+      border: 1px solid rgba(199,154,61,.45);
+      background: rgba(0,0,0,.22);
+      padding: 12px;
+      margin-top: 10px;
+    }
+
+    .delivery-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--cream);
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+    }
+
+    .delivery-label input {
+      width: auto;
+      margin: 0;
+    }
+
+    .delivery-address {
+      grid-column: 1 / -1;
+      display: none;
+    }
+
+    .delivery-note {
+      grid-column: 1 / -1;
+      display: none;
+      border: 1px solid rgba(199,154,61,.55);
+      background: rgba(156,36,24,.18);
+      color: var(--cream);
+      padding: 10px 12px;
+      margin-top: 10px;
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .full {
+      grid-column: 1 / -1;
+    }
+
+    /* ===============================
+       MOBILE
+       =============================== */
+    @media (max-width: 900px) {
+      body {
+        overflow-x: hidden;
+      }
+
+      .frame {
+        border-left: none;
+        border-right: none;
+      }
+
+      nav {
+        grid-template-columns: auto auto;
+        justify-content: space-between;
+        gap: 12px;
+        min-height: 82px;
+        padding: 10px 14px;
+      }
+
+      .logo {
+        width: 104px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .cart-button {
+        padding: 11px 14px;
+        font-size: 12px;
+        letter-spacing: .08em;
+      }
+
+      .hero {
+        min-height: 620px;
+        background-position: center right;
+      }
+
+      .hero-left {
+        padding: 72px 22px 52px;
+      }
+
+      h1 {
+        font-size: clamp(42px, 13vw, 64px);
+        line-height: .96;
+      }
+
+      .hero-text {
+        font-size: 17px;
+      }
+
+      .ornamental-line {
+        gap: 12px;
+        margin: 22px 0;
+      }
+
+      .line {
+        width: 88px;
+      }
+
+      .red-button {
+        width: 100%;
+        padding: 14px 18px;
+        font-size: 15px;
+      }
+
+      .section-title {
+        font-size: 28px;
+        gap: 10px;
+        padding: 28px 16px 8px;
+      }
+
+      .section-title::before,
+      .section-title::after {
+        width: 40px;
+      }
+
+      .product-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+        padding: 20px 14px 42px;
+      }
+
+      .product-card {
+        min-height: auto;
+        padding: 14px;
+      }
+
+      .product-card:hover {
+        transform: none;
+      }
+
+      .product-card img {
+        height: 150px;
+      }
+
+      .product-card h3 {
+        min-height: auto;
+        font-size: 17px;
+      }
+
+      .survey-grid {
+        padding: 20px 14px 36px;
+      }
+
+      .story {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+
+      .story img {
+        position: relative;
+        width: 100%;
+        height: 260px;
+        opacity: .55;
+      }
+
+      .story-left {
+        padding: 34px 20px;
+      }
+
+      .cta-strip {
+        grid-template-columns: 1fr;
+        margin: 0 14px 28px;
+        padding: 24px 18px;
+      }
+
+      .cta-strip h2 {
+        font-size: 30px;
+      }
+
+      footer {
+        grid-template-columns: 1fr;
+        gap: 22px;
+        padding: 30px 20px;
+        text-align: center;
+      }
+
+      footer img {
+        margin: 0 auto;
+      }
+
+      .cart {
+        width: 100vw;
+        max-width: 100vw;
+        padding: 20px;
+      }
+
+      .modal {
+        align-items: flex-start;
+        overflow-y: auto;
+        padding: 12px;
+      }
+
+      .modal-box {
+        width: 100%;
+        max-width: 100%;
+        max-height: none;
+        padding: 22px 18px;
+        margin: 12px 0;
+      }
+
+      .modal-box > .close {
+        margin: -6px -4px 8px 10px;
+      }
+
+      .payment-links,
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 580px) {
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .product-card img {
+        height: 190px;
+      }
+
+      .logo {
+        width: 96px;
+      }
+
+      .cart-button {
+        padding: 10px 12px;
+        font-size: 11px;
+      }
+
+      .hero-left {
+        padding: 46px 18px 34px;
+      }
+
+      .hero {
+        min-height: 560px;
+        background-position: center;
+      }
+
+      .section-title {
+        font-size: 24px;
+        letter-spacing: .04em;
+      }
+
+      .section-title::before,
+      .section-title::after {
+        display: none;
+      }
+
+      .paragraph {
+        font-size: 15px;
+      }
+
+      .small-red-button {
+        font-size: 14px;
+      }
+
+      .modal-box h2,
+      .cart h2 {
+        font-size: 26px;
+      }
+    }
   </style>
 </head>
+
 <body>
   <div class="frame">
     <nav>
       <img src="logo.png" alt="Cajun Cravings logo" class="logo" onerror="this.style.display='none'" />
-      <div class="nav-links"><a href="#home">Home</a><a href="#shop">Shop</a><a href="#story">Our Story</a><a href="#survey">Survey</a><a href="#contact">Contact</a></div>
-      <button class="cart-button" onclick="openCart()">🛒 Cart (<span id="cart-count">0</span>)</button>
+
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#shop">Shop</a>
+        <a href="#story">Our Story</a>
+        <a href="#survey">Survey</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <button class="cart-button" onclick="openCart()">
+        🛒 Cart (<span id="cart-count">0</span>)
+      </button>
     </nav>
-    <section id="home" class="hero"><div class="hero-left"><h1>Bold Flavor. Cajun Soul.</h1><div class="ornamental-line"><span class="line"></span><span class="fleur">⚜</span><span class="line"></span></div><p class="hero-text">Homemade crawfish boudin balls made to bring the bayou straight to your table.</p><button class="red-button" onclick="document.getElementById('shop').scrollIntoView()">Shop Now ⚜</button></div></section>
-    <section id="shop"><div class="section-title">⚓ Shop Our Favorites ⚓</div><div id="product-grid" class="product-grid"><article class="product-card"><img src="boudinballs.jpg?version=v3" alt="Classic Boudin Balls"><h3>Classic Boudin Balls</h3><p>Original Boudin Balls</p><p class="price">$12.99</p><span class="availability">Available</span><button class="small-red-button" onclick="addToCart(1)">Add to Cart ⚜</button></article><article class="product-card"><img src="boudinballs.jpg?version=v3" alt="Crawfish Boudin Balls"><h3>Crawfish Boudin Balls</h3><p>Boudin Balls with Crawfish + Spices</p><p class="price">$14.99</p><span class="availability">Available</span><button class="small-red-button" onclick="addToCart(2)">Add to Cart ⚜</button></article><article class="product-card"><img src="boudinballs.jpg?version=v3" alt="Hot Cheeto Boudin Balls"><h3>Hot Cheeto Boudin Balls</h3><p>Boudin Balls Rolled In Cheeto Dust</p><p class="price">$16.99</p><span class="availability sold-out">Sold Out</span><button class="small-red-button" disabled>Sold Out</button></article><article class="product-card"><img src="boudinballs.jpg?version=v3" alt="Sample Pack"><h3>Sample Pack</h3><p>Two Of Each Of The Boudin Balls</p><p class="price">$39.99</p><span class="availability">Available</span><button class="small-red-button" onclick="addToCart(4)">Add to Cart ⚜</button></article></div></section>
-    <section id="story" class="story"><img src="https://images.unsplash.com/photo-1604909052743-94e838986d24?auto=format&fit=crop&w=1400&q=80" alt="Cajun fried food spread" /><div class="story-left"><div class="section-title">⚓ Our Story ⚓</div><p class="paragraph">Cajun Cravings was born from family recipes, weekend boils, and the kind of food people ask about before they even leave the driveway. Every order is handmade with crawfish, rice, seasoning, and real louisiana pride.</p><button class="red-button" onclick="document.getElementById('shop').scrollIntoView()">Order Yours ⚜</button></div></section>
-    <section id="survey"><div class="section-title">⚓ Customer Survey ⚓</div><div class="reviews">
-      <article class="review-card" style="grid-column:1/-1;text-align:left">
-        <h3 style="color:var(--gold2);text-transform:uppercase;letter-spacing:.08em;margin-top:0">What should we add next?</h3>
-        <p class="review-text">Vote for the items you would like to see in the Cajun Cravings shop in the future.</p>
-        <iframe name="survey-submit-frame" style="display:none"></iframe>
-        <form id="survey-form" action="https://formsubmit.co/cajuncravings1@outlook.com" method="POST" target="survey-submit-frame" onsubmit="submitSurvey(event)">
-          <input type="hidden" name="_subject" value="New Cajun Cravings Customer Survey Vote">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_template" value="table">
-          <label class="delivery-label"><input type="checkbox" name="Future Shop Items" value="Crawfish Mac & Cheese Bites"> Crawfish Mac & Cheese Bites</label>
-          <label class="delivery-label"><input type="checkbox" name="Future Shop Items" value="Cajun Egg Rolls"> Cajun Egg Rolls</label>
-          <label class="delivery-label"><input type="checkbox" name="Future Shop Items" value="Seafood Stuffed Boudin Balls"> Seafood Stuffed Boudin Balls</label>
-          <label class="delivery-label"><input type="checkbox" name="Future Shop Items" value="Jalapeño Cheese Boudin Balls"> Jalapeño Cheese Boudin Balls</label>
-          <label class="delivery-label"><input type="checkbox" name="Future Shop Items" value="Crawfish Etouffee Cups"> Crawfish Etouffee Cups</label>
-          <textarea name="Customer Suggestion" placeholder="Suggest another item" style="min-height:90px"></textarea>
-          <button class="red-button" type="submit">Submit Vote ⚜</button>
-          <p id="survey-success" class="review-text" style="display:none;color:var(--gold2);margin-top:18px">Thanks — your vote has been submitted.</p>
-        </form>
-      </article>
-    </div></section>
-    <section class="cta-strip"><div><h2>Bring the Bayou Home</h2><p class="paragraph">Authentic flavor. Handmade batches. Made with Cajun pride.</p></div><button class="red-button" onclick="openCart()">View Cart ⚜</button></section>
-    <footer id="contact"><img src="logo.png" alt="Cajun Cravings logo" onerror="this.style.display='none'" /><div><h4>Quick Links</h4><p>Shop</p><p>Our Story</p><p>Survey</p><p>Contact</p></div><div><h4>Customer Care</h4><p>Pickup Scheduling</p><p>Special Orders</p><p>Catering Requests</p><p>FAQs</p></div><div><h4>Stay Connected</h4><p>Subscribe for batch drops, pickup windows, and specials.</p><input placeholder="Enter your email" /></div></footer>
+
+    <section id="home" class="hero">
+      <div class="hero-left">
+        <h1>Bold Flavor. Cajun Soul.</h1>
+        <div class="ornamental-line">
+          <span class="line"></span>
+          <span class="fleur">⚜</span>
+          <span class="line"></span>
+        </div>
+        <p class="hero-text">Homemade crawfish boudin balls made to bring the bayou straight to your table.</p>
+        <button class="red-button" onclick="document.getElementById('shop').scrollIntoView()">Shop Now ⚜</button>
+      </div>
+    </section>
+
+    <section id="shop">
+      <div class="section-title">⚓ Shop Our Favorites ⚓</div>
+      <div id="product-grid" class="product-grid"></div>
+    </section>
+
+    <section id="story" class="story">
+      <img src="https://images.unsplash.com/photo-1604909052743-94e838986d24?auto=format&fit=crop&w=1400&q=80" alt="Cajun fried food spread" />
+      <div class="story-left">
+        <div class="section-title">⚓ Our Story ⚓</div>
+        <p class="paragraph">Cajun Cravings was born from family recipes, weekend boils, and the kind of food people ask about before they even leave the driveway. Every order is handmade with crawfish, rice, seasoning, and real louisiana pride.</p>
+        <button class="red-button" onclick="document.getElementById('shop').scrollIntoView()">Order Yours ⚜</button>
+      </div>
+    </section>
+
+    <section id="survey">
+      <div class="section-title">⚓ Customer Survey ⚓</div>
+      <div class="survey-grid">
+        <article class="survey-card">
+          <h3>What should we add next?</h3>
+          <p class="paragraph">Vote for the items you would like to see in the Cajun Cravings shop in the future.</p>
+
+          <iframe name="survey-submit-frame" style="display:none"></iframe>
+          <form id="survey-form" action="https://formsubmit.co/cajuncravings1@outlook.com" method="POST" target="survey-submit-frame" onsubmit="submitSurvey(event)">
+            <input type="hidden" name="_subject" value="New Cajun Cravings Customer Survey Vote">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+            <div id="survey-options"></div>
+            <textarea name="Customer Suggestion" placeholder="Suggest another item" style="min-height:90px"></textarea>
+            <button class="red-button" type="submit">Submit Vote ⚜</button>
+            <p id="survey-success" class="paragraph" style="display:none;color:var(--gold2);margin-top:18px">Thanks — your vote has been submitted.</p>
+          </form>
+        </article>
+      </div>
+    </section>
+
+    <section class="cta-strip">
+      <div>
+        <h2>Bring the Bayou Home</h2>
+        <p class="paragraph">Authentic flavor. Handmade batches. Made with Cajun pride.</p>
+      </div>
+      <button class="red-button" onclick="openCart()">View Cart ⚜</button>
+    </section>
+
+    <footer id="contact">
+      <img src="logo.png" alt="Cajun Cravings logo" onerror="this.style.display='none'" />
+      <div>
+        <h4>Quick Links</h4>
+        <p>Shop</p>
+        <p>Our Story</p>
+        <p>Survey</p>
+        <p>Contact</p>
+      </div>
+      <div>
+        <h4>Customer Care</h4>
+        <p>Pickup Scheduling</p>
+        <p>Special Orders</p>
+        <p>Catering Requests</p>
+        <p>FAQs</p>
+      </div>
+      <div>
+        <h4>Stay Connected</h4>
+        <p>Subscribe for batch drops, pickup windows, and specials.</p>
+        <input placeholder="Enter your email" />
+      </div>
+    </footer>
   </div>
+
   <button class="overlay" id="overlay" onclick="closeCart()" aria-label="Close cart"></button>
-  <aside class="cart" id="cart"><button class="close" onclick="closeCart()">×</button><h2>YOUR CART</h2><div id="cart-items" style="flex:1;overflow-y:auto"></div><div style="border-top:1px solid rgba(199,154,61,.35);padding-top:18px"><div class="cart-row"><strong>Total</strong><strong id="cart-total">$0.00</strong></div><button class="red-button" style="width:100%" onclick="openCheckout()">Checkout ⚜</button></div></aside>
-  <iframe name="order-submit-frame" style="display:none"></iframe><div class="modal" id="checkout-modal" onclick="closeCheckout()"><form class="modal-box" id="checkout-form" onclick="event.stopPropagation()" action="https://formsubmit.co/cajuncravings1@outlook.com" method="POST" target="order-submit-frame" onsubmit="placeOrder(event)"><button type="button" class="close" onclick="closeCheckout()">×</button><h2>PICKUP ORDER</h2><div id="order-form"><input type="hidden" name="_subject" value="New Cajun Cravings Pickup Order"><input type="hidden" name="_captcha" value="false"><input type="hidden" name="_template" value="table"><input type="hidden" id="order-details-field" name="Order Details" value=""><input type="hidden" id="order-total-field" name="Order Total" value=""><div class="pickup-note"><strong>Weekly ordering:</strong> Orders close Sunday at 7 PM. Choose your drop-off location first. Each location has its own pickup day, with pickup times from 5:00 PM to 7:00 PM.</div><div class="form-grid"><input id="customer-name" name="Customer Name" required placeholder="Name" /><input id="customer-phone" name="Phone" required placeholder="Phone" inputmode="tel" /><input id="customer-email" name="Email" class="full" placeholder="Email" /><select id="pickup-location" name="Pickup Location" required><option value="">Choose pickup location</option><option value="Ardmore">Ardmore</option><option value="Lone Grove">Lone Grove</option><option value="Wilson">Wilson</option></select><select id="pickup-day" name="Pickup Day" required><option value="">Choose pickup day</option><option value="Friday">Friday</option><option value="Saturday">Saturday</option><option value="Sunday">Sunday</option></select><select id="pickup-time" name="Pickup Time" required><option value="">Choose pickup time</option><option value="5:00 PM">5:00 PM</option><option value="5:30 PM">5:30 PM</option><option value="6:00 PM">6:00 PM</option><option value="6:30 PM">6:30 PM</option><option value="7:00 PM">7:00 PM</option></select><div class="delivery-row"><label class="delivery-label"><input type="checkbox" id="delivery-checkbox" name="Delivery Requested" value="Yes" onchange="toggleDelivery()"> Add delivery for $5</label></div><p id="delivery-note" class="delivery-note"><strong>Delivery note:</strong> Delivery is only available to Wilson, Lone Grove, and Ardmore.</p><textarea id="delivery-address" name="Delivery Address" class="delivery-address" placeholder="Delivery address" style="min-height:80px"></textarea><textarea id="order-notes" name="Notes" class="full" placeholder="Order notes" style="min-height:100px"></textarea></div><p class="paragraph">Total: <span id="checkout-total">$0.00</span></p><p class="paragraph" style="font-size:14px;margin-top:10px">Submitting sends the order request directly to Cajun Cravings.</p><button class="red-button" type="submit">Submit Order Request ⚜</button></div><div id="order-success" style="display:none"><p class="paragraph" id="order-status-message">Order request sent. Pay with Cash App or Venmo to confirm your pickup order.</p><div class="payment-links"><a class="payment-link" href="https://cash.app/$mikemunoz96" target="_blank" rel="noopener">Cash App</a><a class="payment-link" href="https://venmo.com/mikemunoz96" target="_blank" rel="noopener">Venmo</a></div><p class="paragraph" style="font-size:14px">Cash App: $mikemunoz96<br>Venmo: @mikemunoz96<br>Questions: 985-415-5688</p><button type="button" class="red-button" onclick="finishOrder()">Done</button></div></form></div>
+
+  <aside class="cart" id="cart">
+    <button class="close" onclick="closeCart()">×</button>
+    <h2>YOUR CART</h2>
+    <div id="cart-items" style="flex:1;overflow-y:auto"></div>
+    <div style="border-top:1px solid rgba(199,154,61,.35);padding-top:18px">
+      <div class="cart-row">
+        <strong>Total</strong>
+        <strong id="cart-total">$0.00</strong>
+      </div>
+      <button class="red-button" style="width:100%" onclick="openCheckout()">Checkout ⚜</button>
+    </div>
+  </aside>
+
+  <iframe name="order-submit-frame" style="display:none"></iframe>
+
+  <div class="modal" id="checkout-modal" onclick="closeCheckout()">
+    <form class="modal-box" id="checkout-form" onclick="event.stopPropagation()" action="https://formsubmit.co/cajuncravings1@outlook.com" method="POST" target="order-submit-frame" onsubmit="placeOrder(event)">
+      <button type="button" class="close" onclick="closeCheckout()">×</button>
+      <h2>PICKUP ORDER</h2>
+
+      <div id="order-form">
+        <input type="hidden" name="_subject" value="New Cajun Cravings Pickup Order">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" id="order-details-field" name="Order Details" value="">
+        <input type="hidden" id="order-total-field" name="Order Total" value="">
+
+        <div class="pickup-note">
+          <strong>Weekly ordering:</strong> Orders close Sunday at 7 PM. Choose your drop-off location first. Each location has its own pickup day, with pickup times from 5:00 PM to 7:00 PM.
+        </div>
+
+        <div class="form-grid">
+          <input id="customer-name" name="Customer Name" required placeholder="Name" />
+          <input id="customer-phone" name="Phone" required placeholder="Phone" inputmode="tel" />
+          <input id="customer-email" name="Email" class="full" placeholder="Email" />
+
+          <select id="pickup-location" name="Pickup Location" required>
+            <option value="">Choose pickup location</option>
+            <option value="Ardmore">Ardmore</option>
+            <option value="Lone Grove">Lone Grove</option>
+            <option value="Wilson">Wilson</option>
+          </select>
+
+          <select id="pickup-day" name="Pickup Day" required>
+            <option value="">Choose pickup day</option>
+            <option value="Friday">Friday</option>
+            <option value="Saturday">Saturday</option>
+            <option value="Sunday">Sunday</option>
+          </select>
+
+          <select id="pickup-time" name="Pickup Time" required>
+            <option value="">Choose pickup time</option>
+            <option value="5:00 PM">5:00 PM</option>
+            <option value="5:30 PM">5:30 PM</option>
+            <option value="6:00 PM">6:00 PM</option>
+            <option value="6:30 PM">6:30 PM</option>
+            <option value="7:00 PM">7:00 PM</option>
+          </select>
+
+          <div class="delivery-row">
+            <label class="delivery-label">
+              <input type="checkbox" id="delivery-checkbox" name="Delivery Requested" value="Yes" onchange="toggleDelivery()">
+              Add delivery for $5
+            </label>
+          </div>
+
+          <p id="delivery-note" class="delivery-note"><strong>Delivery note:</strong> Delivery is only available to Wilson, Lone Grove, and Ardmore.</p>
+          <textarea id="delivery-address" name="Delivery Address" class="delivery-address" placeholder="Delivery address" style="min-height:80px"></textarea>
+          <textarea id="order-notes" name="Notes" class="full" placeholder="Order notes" style="min-height:100px"></textarea>
+        </div>
+
+        <p class="paragraph">Total: <span id="checkout-total">$0.00</span></p>
+        <p class="paragraph" style="font-size:14px;margin-top:10px">Submitting sends the order request directly to Cajun Cravings.</p>
+        <button class="red-button" type="submit">Submit Order Request ⚜</button>
+      </div>
+
+      <div id="order-success" style="display:none">
+        <p class="paragraph" id="order-status-message">Order request sent. Pay with Cash App or Venmo to confirm your pickup order.</p>
+        <div class="payment-links">
+          <a class="payment-link" href="https://cash.app/$mikemunoz96" target="_blank" rel="noopener">Cash App</a>
+          <a class="payment-link" href="https://venmo.com/mikemunoz96" target="_blank" rel="noopener">Venmo</a>
+        </div>
+        <p class="paragraph" style="font-size:14px">Cash App: $mikemunoz96<br>Venmo: @mikemunoz96<br>Questions: 985-415-5688</p>
+        <button type="button" class="red-button" onclick="finishOrder()">Done</button>
+      </div>
+    </form>
+  </div>
+
   <script>
-    // ===============================
-    // SHOP PRODUCTS — EDIT THIS SECTION ONLY
-    // Change name, subtitle, price, image, and available here.
-    // available: true  = can be ordered
-    // available: false = shows Sold Out and disables button
-    // ===============================
+    /* ===============================
+       EASY EDIT SETTINGS
+       =============================== */
+    const IMAGE_VERSION = 'v3';
+    const ORDER_PHONE = '985-415-5688';
+    const CASHAPP = '$mikemunoz96';
+    const VENMO = '@mikemunoz96';
+    const DELIVERY_FEE = 5;
+
+    /* ===============================
+       SHOP PRODUCTS — EDIT THIS SECTION
+       =============================== */
     const products = [
       {
         id: 1,
@@ -85,53 +1150,193 @@
         img: 'boudinballs.jpg'
       }
     ];
-    // Change this number whenever you replace image files but the old ones still show.
-    // Example: v1, v2, v3, etc.
-    const IMAGE_VERSION = 'v3';
 
-    function imagePath(src){
-      if(!src) return '';
-      if(src.startsWith('http') || src.startsWith('data:')) return src;
+    /* ===============================
+       SURVEY OPTIONS — EDIT THIS SECTION
+       =============================== */
+    const surveyItems = [
+      'Crawfish Mac & Cheese Bites',
+      'Cajun Egg Rolls',
+      'Seafood Stuffed Boudin Balls',
+      'Jalapeño Cheese Boudin Balls',
+      'Crawfish Etouffee Cups'
+    ];
+
+    /* ===============================
+       SITE LOGIC
+       =============================== */
+    let cart = [];
+    const money = value => '$' + value.toFixed(2);
+
+    function imagePath(src) {
+      if (!src) return '';
+      if (src.startsWith('http') || src.startsWith('data:')) return src;
       return src + '?version=' + IMAGE_VERSION;
     }
 
-    const reviews=[{name:'Michelle R.',text:'The flavor is incredible. Crispy outside, rich inside, and full Louisiana flavor.'},{name:'Jason T.',text:'We ordered a party sack and it disappeared in minutes. Absolutely ordering again.'},{name:'Sarah L.',text:'Best crawfish boudin balls I have ever had. Hands down.'}];
-    const ORDER_EMAIL='cajuncravings1@outlook.com';
-    const ORDER_PHONE='985-415-5688';
-    const CASHAPP='$mikemunoz96';
-    const VENMO='@mikemunoz96';
-    const DELIVERY_FEE=5;
-    let cart=[];const money=v=>'$'+v.toFixed(2);
-    function renderProducts(){document.getElementById('product-grid').innerHTML=products.map(p=>`<article class="product-card"><img src="${imagePath(p.img)}" alt="${p.name}"><h3>${p.name}</h3><p>${p.subtitle}</p><p class="price">${money(p.price)}</p><span class="availability ${p.available?'':'sold-out'}">${p.available?'Available':'Sold Out'}</span><button class="small-red-button" ${p.available?'':'disabled'} onclick="addToCart(${p.id})">${p.available?'Add to Cart ⚜':'Sold Out'}</button></article>`).join('')}
-    function addToCart(id){const p=products.find(x=>x.id===id);if(!p||!p.available)return;const e=cart.find(x=>x.id===id);if(e)e.qty++;else cart.push({...p,qty:1});renderCart();openCart()}function updateQty(id,c){cart=cart.map(x=>x.id===id?{...x,qty:x.qty+c}:x).filter(x=>x.qty>0);renderCart()}function removeItem(id){cart=cart.filter(x=>x.id!==id);renderCart()}
-    function getDeliverySelected(){const box=document.getElementById('delivery-checkbox');return !!(box&&box.checked)}
-    function getCartSubtotal(){return cart.reduce((s,i)=>s+i.qty*i.price,0)}
-    function getOrderTotal(){return getCartSubtotal()+(getDeliverySelected()?DELIVERY_FEE:0)}
-    function renderCart(){const count=cart.reduce((s,i)=>s+i.qty,0),total=getOrderTotal();document.getElementById('cart-count').textContent=count;document.getElementById('cart-total').textContent=money(total);document.getElementById('checkout-total').textContent=money(total);document.getElementById('cart-items').innerHTML=cart.length===0?'<p class="paragraph">Your cart is empty.</p>':cart.map(i=>`<div class="cart-item"><div class="cart-row"><strong>${i.name}</strong><button class="mini-button" onclick="removeItem(${i.id})">×</button></div><p>${money(i.price)} each</p><div class="cart-row"><div class="qty"><button class="mini-button" onclick="updateQty(${i.id},-1)">-</button><span>${i.qty}</span><button class="mini-button" onclick="updateQty(${i.id},1)">+</button></div><strong>${money(i.price*i.qty)}</strong></div></div>`).join('')}
-    function openCart(){document.getElementById('cart').classList.add('open');document.getElementById('overlay').classList.add('open')}
-    function closeCart(){document.getElementById('cart').classList.remove('open');document.getElementById('overlay').classList.remove('open')}
-    function openCheckout(){if(cart.length)document.getElementById('checkout-modal').classList.add('open')}
-    function closeCheckout(){document.getElementById('checkout-modal').classList.remove('open')}
-    function setPickupFieldsRequired(required){['pickup-location','pickup-day','pickup-time'].forEach(id=>{const field=document.getElementById(id);field.required=required;field.disabled=!required;if(!required)field.value=''})}
-    function toggleDelivery(){const checked=getDeliverySelected();const address=document.getElementById('delivery-address');const note=document.getElementById('delivery-note');address.style.display=checked?'block':'none';note.style.display=checked?'block':'none';address.required=checked;setPickupFieldsRequired(!checked);if(!checked)address.value='';renderCart()}
-    function buildOrderMessage(){const name=document.getElementById('customer-name').value;const phone=document.getElementById('customer-phone').value;const email=document.getElementById('customer-email').value;const day=document.getElementById('pickup-day').value;const location=document.getElementById('pickup-location').value;const time=document.getElementById('pickup-time').value;const delivery=getDeliverySelected();const address=document.getElementById('delivery-address').value;const notes=document.getElementById('order-notes').value;const subtotal=getCartSubtotal();const total=getOrderTotal();const items=cart.map(i=>`- ${i.name} x${i.qty} = ${money(i.price*i.qty)}`).join('\n');return `New Cajun Cravings Pickup Order
+    function renderProducts() {
+      document.getElementById('product-grid').innerHTML = products.map(product => `
+        <article class="product-card">
+          <img src="${imagePath(product.img)}" alt="${product.name}">
+          <h3>${product.name}</h3>
+          <p>${product.subtitle}</p>
+          <p class="price">${money(product.price)}</p>
+          <span class="availability ${product.available ? '' : 'sold-out'}">${product.available ? 'Available' : 'Sold Out'}</span>
+          <button class="small-red-button" ${product.available ? '' : 'disabled'} onclick="addToCart(${product.id})">
+            ${product.available ? 'Add to Cart ⚜' : 'Sold Out'}
+          </button>
+        </article>
+      `).join('');
+    }
+
+    function renderSurveyItems() {
+      document.getElementById('survey-options').innerHTML = surveyItems.map(item => `
+        <label class="survey-option">
+          <input type="checkbox" name="Future Shop Items" value="${item}">
+          ${item}
+        </label>
+      `).join('');
+    }
+
+    function addToCart(id) {
+      const product = products.find(item => item.id === id);
+      if (!product || !product.available) return;
+
+      const existing = cart.find(item => item.id === id);
+      if (existing) existing.qty++;
+      else cart.push({ ...product, qty: 1 });
+
+      renderCart();
+      openCart();
+    }
+
+    function updateQty(id, change) {
+      cart = cart
+        .map(item => item.id === id ? { ...item, qty: item.qty + change } : item)
+        .filter(item => item.qty > 0);
+      renderCart();
+    }
+
+    function removeItem(id) {
+      cart = cart.filter(item => item.id !== id);
+      renderCart();
+    }
+
+    function getDeliverySelected() {
+      const box = document.getElementById('delivery-checkbox');
+      return !!(box && box.checked);
+    }
+
+    function getCartSubtotal() {
+      return cart.reduce((sum, item) => sum + item.qty * item.price, 0);
+    }
+
+    function getOrderTotal() {
+      return getCartSubtotal() + (getDeliverySelected() ? DELIVERY_FEE : 0);
+    }
+
+    function renderCart() {
+      const count = cart.reduce((sum, item) => sum + item.qty, 0);
+      const total = getOrderTotal();
+
+      document.getElementById('cart-count').textContent = count;
+      document.getElementById('cart-total').textContent = money(total);
+      document.getElementById('checkout-total').textContent = money(total);
+
+      document.getElementById('cart-items').innerHTML = cart.length === 0
+        ? '<p class="paragraph">Your cart is empty.</p>'
+        : cart.map(item => `
+          <div class="cart-item">
+            <div class="cart-row">
+              <strong>${item.name}</strong>
+              <button class="mini-button" onclick="removeItem(${item.id})">×</button>
+            </div>
+            <p>${money(item.price)} each</p>
+            <div class="cart-row">
+              <div class="qty">
+                <button class="mini-button" onclick="updateQty(${item.id}, -1)">-</button>
+                <span>${item.qty}</span>
+                <button class="mini-button" onclick="updateQty(${item.id}, 1)">+</button>
+              </div>
+              <strong>${money(item.price * item.qty)}</strong>
+            </div>
+          </div>
+        `).join('');
+    }
+
+    function openCart() {
+      document.getElementById('cart').classList.add('open');
+      document.getElementById('overlay').classList.add('open');
+    }
+
+    function closeCart() {
+      document.getElementById('cart').classList.remove('open');
+      document.getElementById('overlay').classList.remove('open');
+    }
+
+    function openCheckout() {
+      if (cart.length) document.getElementById('checkout-modal').classList.add('open');
+    }
+
+    function closeCheckout() {
+      document.getElementById('checkout-modal').classList.remove('open');
+    }
+
+    function setPickupFieldsRequired(required) {
+      ['pickup-location', 'pickup-day', 'pickup-time'].forEach(id => {
+        const field = document.getElementById(id);
+        field.required = required;
+        field.disabled = !required;
+        if (!required) field.value = '';
+      });
+    }
+
+    function toggleDelivery() {
+      const checked = getDeliverySelected();
+      const address = document.getElementById('delivery-address');
+      const note = document.getElementById('delivery-note');
+
+      address.style.display = checked ? 'block' : 'none';
+      note.style.display = checked ? 'block' : 'none';
+      address.required = checked;
+      setPickupFieldsRequired(!checked);
+
+      if (!checked) address.value = '';
+      renderCart();
+    }
+
+    function buildOrderMessage() {
+      const name = document.getElementById('customer-name').value;
+      const phone = document.getElementById('customer-phone').value;
+      const email = document.getElementById('customer-email').value;
+      const day = document.getElementById('pickup-day').value;
+      const location = document.getElementById('pickup-location').value;
+      const time = document.getElementById('pickup-time').value;
+      const delivery = getDeliverySelected();
+      const address = document.getElementById('delivery-address').value;
+      const notes = document.getElementById('order-notes').value;
+      const subtotal = getCartSubtotal();
+      const total = getOrderTotal();
+      const items = cart.map(item => `- ${item.name} x${item.qty} = ${money(item.price * item.qty)}`).join('\n');
+
+      return `New Cajun Cravings Pickup Order
 
 Customer: ${name}
 Phone: ${phone}
 Email: ${email || 'Not provided'}
-Order Type: ${delivery?'Delivery':'Pickup'}
-Pickup Location: ${delivery?'N/A':location}
-Pickup Day: ${delivery?'N/A':day}
-Pickup Time: ${delivery?'N/A':time}
-Delivery Requested: ${delivery?'Yes (+$5)':'No'}
-Delivery Address: ${delivery?(address || 'Not provided'):'N/A'}
+Order Type: ${delivery ? 'Delivery' : 'Pickup'}
+Pickup Location: ${delivery ? 'N/A' : location}
+Pickup Day: ${delivery ? 'N/A' : day}
+Pickup Time: ${delivery ? 'N/A' : time}
+Delivery Requested: ${delivery ? 'Yes (+$5)' : 'No'}
+Delivery Address: ${delivery ? (address || 'Not provided') : 'N/A'}
 Order Cutoff: Sunday at 7 PM
 
 Order:
 ${items}
 
 Subtotal: ${money(subtotal)}
-Delivery Fee: ${delivery?money(DELIVERY_FEE):'$0.00'}
+Delivery Fee: ${delivery ? money(DELIVERY_FEE) : '$0.00'}
 Total: ${money(total)}
 
 Payment Options:
@@ -141,11 +1346,45 @@ Venmo: ${VENMO}
 Notes:
 ${notes || 'None'}
 
-Contact Number: ${ORDER_PHONE}`}
-    function placeOrder(e){if(!cart.length){e.preventDefault();return}const total=getOrderTotal();const orderMessage=buildOrderMessage();document.getElementById('order-details-field').value=orderMessage;document.getElementById('order-total-field').value=money(total);setTimeout(()=>{document.getElementById('order-form').style.display='none';document.getElementById('order-success').style.display='block';cart=[];renderCart();closeCart()},700)}
-    function finishOrder(){document.getElementById('checkout-modal').classList.remove('open');document.getElementById('order-form').style.display='block';document.getElementById('order-success').style.display='none'}
-    function submitSurvey(e){setTimeout(()=>{document.getElementById('survey-success').style.display='block';document.getElementById('survey-form').reset()},500)}
-    try{renderProducts()}catch(error){console.warn('Product auto-render failed, using HTML fallback.',error)}
+Contact Number: ${ORDER_PHONE}`;
+    }
+
+    function placeOrder(event) {
+      if (!cart.length) {
+        event.preventDefault();
+        return;
+      }
+
+      const total = getOrderTotal();
+      const orderMessage = buildOrderMessage();
+
+      document.getElementById('order-details-field').value = orderMessage;
+      document.getElementById('order-total-field').value = money(total);
+
+      setTimeout(() => {
+        document.getElementById('order-form').style.display = 'none';
+        document.getElementById('order-success').style.display = 'block';
+        cart = [];
+        renderCart();
+        closeCart();
+      }, 700);
+    }
+
+    function finishOrder() {
+      document.getElementById('checkout-modal').classList.remove('open');
+      document.getElementById('order-form').style.display = 'block';
+      document.getElementById('order-success').style.display = 'none';
+    }
+
+    function submitSurvey() {
+      setTimeout(() => {
+        document.getElementById('survey-success').style.display = 'block';
+        document.getElementById('survey-form').reset();
+      }, 500);
+    }
+
+    renderProducts();
+    renderSurveyItems();
     renderCart();
   </script>
 </body>
