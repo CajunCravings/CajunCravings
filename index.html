@@ -12,19 +12,34 @@
   <div class="frame">
     <nav>
       <img src="logo.png" alt="Cajun Cravings logo" class="logo" onerror="this.style.display='none'" />
-      <div class="nav-links"><a href="#home">Home</a><a href="#shop">Shop</a><a href="#story">Our Story</a><a href="#reviews">Reviews</a><a href="#contact">Contact</a></div>
+      <div class="nav-links"><a href="#home">Home</a><a href="#shop">Shop</a><a href="#story">Our Story</a><a href="#survey">Survey</a><a href="#contact">Contact</a></div>
       <button class="cart-button" onclick="openCart()">🛒 Cart (<span id="cart-count">0</span>)</button>
     </nav>
     <section id="home" class="hero"><div class="hero-left"><h1>Bold Flavor. Cajun Soul.</h1><div class="ornamental-line"><span class="line"></span><span class="fleur">⚜</span><span class="line"></span></div><p class="hero-text">Homemade crawfish boudin balls made to bring the bayou straight to your table.</p><button class="red-button" onclick="document.getElementById('shop').scrollIntoView()">Shop Now ⚜</button></div></section>
     <section id="shop"><div class="section-title">⚓ Shop Our Favorites ⚓</div><div id="product-grid" class="product-grid"><article class="product-card"><img src="boudinballs.jpg?version=v3" alt="Classic Boudin Balls"><h3>Classic Boudin Balls</h3><p>Original Boudin Balls</p><p class="price">$12.99</p><span class="availability">Available</span><button class="small-red-button" onclick="addToCart(1)">Add to Cart ⚜</button></article><article class="product-card"><img src="boudinballs.jpg?version=v3" alt="Crawfish Boudin Balls"><h3>Crawfish Boudin Balls</h3><p>Boudin Balls with Crawfish + Spices</p><p class="price">$14.99</p><span class="availability">Available</span><button class="small-red-button" onclick="addToCart(2)">Add to Cart ⚜</button></article><article class="product-card"><img src="boudinballs.jpg?version=v3" alt="Hot Cheeto Boudin Balls"><h3>Hot Cheeto Boudin Balls</h3><p>Boudin Balls Rolled In Cheeto Dust</p><p class="price">$16.99</p><span class="availability sold-out">Sold Out</span><button class="small-red-button" disabled>Sold Out</button></article><article class="product-card"><img src="boudinballs.jpg?version=v3" alt="Sample Pack"><h3>Sample Pack</h3><p>Two Of Each Of The Boudin Balls</p><p class="price">$39.99</p><span class="availability">Available</span><button class="small-red-button" onclick="addToCart(4)">Add to Cart ⚜</button></article></div></section>
     <section id="story" class="story"><img src="https://images.unsplash.com/photo-1604909052743-94e838986d24?auto=format&fit=crop&w=1400&q=80" alt="Cajun fried food spread" /><div class="story-left"><div class="section-title">⚓ Our Story ⚓</div><p class="paragraph">Cajun Cravings was born from family recipes, weekend boils, and the kind of food people ask about before they even leave the driveway. Every order is handmade with crawfish, rice, seasoning, and real louisiana pride.</p><button class="red-button" onclick="document.getElementById('shop').scrollIntoView()">Order Yours ⚜</button></div></section>
-    <section id="reviews"><div class="section-title">⚓ What Our Customers Say ⚓</div><div id="reviews-grid" class="reviews">
-      <article class="review-card"><div class="stars">★★★★★</div><p class="review-text">“The flavor is incredible. Crispy outside, rich inside, and full Louisiana flavor.”</p><p class="review-text" style="color:var(--gold2)">— Michelle R.</p></article>
-      <article class="review-card"><div class="stars">★★★★★</div><p class="review-text">“We ordered a party sack and it disappeared in minutes. Absolutely ordering again.”</p><p class="review-text" style="color:var(--gold2)">— Jason T.</p></article>
-      <article class="review-card"><div class="stars">★★★★★</div><p class="review-text">“Best crawfish boudin balls I have ever had. Hands down.”</p><p class="review-text" style="color:var(--gold2)">— Sarah L.</p></article>
+    <section id="survey"><div class="section-title">⚓ Customer Survey ⚓</div><div class="reviews">
+      <article class="review-card" style="grid-column:1/-1;text-align:left">
+        <h3 style="color:var(--gold2);text-transform:uppercase;letter-spacing:.08em;margin-top:0">What should we add next?</h3>
+        <p class="review-text">Vote for the items you would like to see in the Cajun Cravings shop in the future.</p>
+        <iframe name="survey-submit-frame" style="display:none"></iframe>
+        <form id="survey-form" action="https://formsubmit.co/cajuncravings1@outlook.com" method="POST" target="survey-submit-frame" onsubmit="submitSurvey(event)">
+          <input type="hidden" name="_subject" value="New Cajun Cravings Customer Survey Vote">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+          <label class="delivery-label"><input type="checkbox" name="Future Shop Items" value="Crawfish Mac & Cheese Bites"> Crawfish Mac & Cheese Bites</label>
+          <label class="delivery-label"><input type="checkbox" name="Future Shop Items" value="Cajun Egg Rolls"> Cajun Egg Rolls</label>
+          <label class="delivery-label"><input type="checkbox" name="Future Shop Items" value="Seafood Stuffed Boudin Balls"> Seafood Stuffed Boudin Balls</label>
+          <label class="delivery-label"><input type="checkbox" name="Future Shop Items" value="Jalapeño Cheese Boudin Balls"> Jalapeño Cheese Boudin Balls</label>
+          <label class="delivery-label"><input type="checkbox" name="Future Shop Items" value="Crawfish Etouffee Cups"> Crawfish Etouffee Cups</label>
+          <textarea name="Customer Suggestion" placeholder="Suggest another item" style="min-height:90px"></textarea>
+          <button class="red-button" type="submit">Submit Vote ⚜</button>
+          <p id="survey-success" class="review-text" style="display:none;color:var(--gold2);margin-top:18px">Thanks — your vote has been submitted.</p>
+        </form>
+      </article>
     </div></section>
     <section class="cta-strip"><div><h2>Bring the Bayou Home</h2><p class="paragraph">Authentic flavor. Handmade batches. Made with Cajun pride.</p></div><button class="red-button" onclick="openCart()">View Cart ⚜</button></section>
-    <footer id="contact"><img src="logo.png" alt="Cajun Cravings logo" onerror="this.style.display='none'" /><div><h4>Quick Links</h4><p>Shop</p><p>Our Story</p><p>Reviews</p><p>Contact</p></div><div><h4>Customer Care</h4><p>Pickup Scheduling</p><p>Special Orders</p><p>Catering Requests</p><p>FAQs</p></div><div><h4>Stay Connected</h4><p>Subscribe for batch drops, pickup windows, and specials.</p><input placeholder="Enter your email" /></div></footer>
+    <footer id="contact"><img src="logo.png" alt="Cajun Cravings logo" onerror="this.style.display='none'" /><div><h4>Quick Links</h4><p>Shop</p><p>Our Story</p><p>Survey</p><p>Contact</p></div><div><h4>Customer Care</h4><p>Pickup Scheduling</p><p>Special Orders</p><p>Catering Requests</p><p>FAQs</p></div><div><h4>Stay Connected</h4><p>Subscribe for batch drops, pickup windows, and specials.</p><input placeholder="Enter your email" /></div></footer>
   </div>
   <button class="overlay" id="overlay" onclick="closeCart()" aria-label="Close cart"></button>
   <aside class="cart" id="cart"><button class="close" onclick="closeCart()">×</button><h2>YOUR CART</h2><div id="cart-items" style="flex:1;overflow-y:auto"></div><div style="border-top:1px solid rgba(199,154,61,.35);padding-top:18px"><div class="cart-row"><strong>Total</strong><strong id="cart-total">$0.00</strong></div><button class="red-button" style="width:100%" onclick="openCheckout()">Checkout ⚜</button></div></aside>
@@ -129,6 +144,7 @@ ${notes || 'None'}
 Contact Number: ${ORDER_PHONE}`}
     function placeOrder(e){if(!cart.length){e.preventDefault();return}const total=getOrderTotal();const orderMessage=buildOrderMessage();document.getElementById('order-details-field').value=orderMessage;document.getElementById('order-total-field').value=money(total);setTimeout(()=>{document.getElementById('order-form').style.display='none';document.getElementById('order-success').style.display='block';cart=[];renderCart();closeCart()},700)}
     function finishOrder(){document.getElementById('checkout-modal').classList.remove('open');document.getElementById('order-form').style.display='block';document.getElementById('order-success').style.display='none'}
+    function submitSurvey(e){setTimeout(()=>{document.getElementById('survey-success').style.display='block';document.getElementById('survey-form').reset()},500)}
     try{renderProducts()}catch(error){console.warn('Product auto-render failed, using HTML fallback.',error)}
     renderCart();
   </script>
