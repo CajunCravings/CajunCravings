@@ -94,8 +94,7 @@
     function openCheckout(){if(cart.length)document.getElementById('checkout-modal').classList.add('open')}
     function closeCheckout(){document.getElementById('checkout-modal').classList.remove('open')}
     function updatePickupDay(){const location=document.getElementById('pickup-location').value;const dayMap={Ardmore:'Sunday','Lone Grove':'Saturday',Wilson:'Friday'};const day=dayMap[location]||'';document.getElementById('pickup-day').value=day;document.getElementById('pickup-day-display').value=day?`${day} pickup`:''}
-    function buildOrderMessage(){const name=document.getElementById('customer-name').value;const phone=document.getElementById('customer-phone').value;const email=document.getElementById('customer-email').value;const day=document.getElementById('pickup-day').value;const location=document.getElementById('pickup-location').value;const time=document.getElementById('pickup-time').value;const notes=document.getElementById('order-notes').value;const total=cart.reduce((s,i)=>s+i.qty*i.price,0);const items=cart.map(i=>`- ${i.name} x${i.qty} = ${money(i.price*i.qty)}`).join('
-');return `New Cajun Cravings Pickup Order
+    function buildOrderMessage(){const name=document.getElementById('customer-name').value;const phone=document.getElementById('customer-phone').value;const email=document.getElementById('customer-email').value;const day=document.getElementById('pickup-day').value;const location=document.getElementById('pickup-location').value;const time=document.getElementById('pickup-time').value;const notes=document.getElementById('order-notes').value;const total=cart.reduce((s,i)=>s+i.qty*i.price,0);const items=cart.map(i=>`- ${i.name} x${i.qty} = ${money(i.price*i.qty)}`).join('\n');return `New Cajun Cravings Pickup Order
 
 Customer: ${name}
 Phone: ${phone}
