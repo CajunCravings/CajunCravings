@@ -161,7 +161,7 @@
       z-index: 2;
       max-width: 800px;
       margin: 0 auto;
-      padding: 130px 20px 86px;
+      padding: 80px 20px 86px; /* moved UP */
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -170,13 +170,13 @@
 
     h1 {
       margin: 0;
-      max-width: 980px;
+      max-width: 820px; /* tighter width so it stacks better */
       text-align: center;
       color: var(--parchment);
-      font-size: clamp(78px, 10vw, 124px);
-      line-height: .92;
-      letter-spacing: .12em; /* wider for hero fill */
-      word-spacing: .28em;   /* more separation between words */
+      font-size: clamp(70px, 9vw, 110px); /* slightly smaller */
+      line-height: 1.05; /* adds vertical spacing between words */
+      letter-spacing: .14em; /* more horizontal spread */
+      word-spacing: .32em;   /* more space between words */
       text-transform: uppercase;
       text-shadow: 0 5px 0 rgba(0,0,0,.48), 0 0 22px rgba(0,0,0,.55);
     }
@@ -185,7 +185,8 @@
       width: 100%;
       text-align: center;
       margin: 0 auto;
-      text-wrap: balance; /* cleaner line fill */
+      text-wrap: balance;
+      margin-top: -20px; /* nudges whole block UP */
     }
 
     .hero-title {
