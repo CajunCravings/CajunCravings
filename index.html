@@ -1280,10 +1280,6 @@
         .map(item => item.id === id ? { ...item, qty: item.qty + change } : item)
         .filter(item => item.qty > 0);
       renderCart();
-    } : item)
-        .filter(item => item.qty > 0);
-      renderCart();
-    }
 
     function removeItem(id) {
       cart = cart.filter(item => item.id !== id);
