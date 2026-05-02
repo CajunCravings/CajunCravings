@@ -170,14 +170,22 @@
 
     h1 {
       margin: 0;
-      max-width: 800px;
+      max-width: 900px;
       text-align: center;
       color: var(--parchment);
-      font-size: clamp(64px, 8vw, 104px);
-      line-height: .88;
-      letter-spacing: .04em;
+      font-size: clamp(72px, 9vw, 118px);
+      line-height: .9;
+      letter-spacing: .08em; /* increased for wider fill */
+      word-spacing: .18em;   /* spreads words slightly */
       text-transform: uppercase;
       text-shadow: 0 5px 0 rgba(0,0,0,.48), 0 0 22px rgba(0,0,0,.55);
+    }
+
+    .hero-title {
+      width: 100%;
+      text-align: center;
+      margin: 0 auto;
+      text-wrap: balance; /* cleaner line fill */
     }
 
     .hero-title {
@@ -973,6 +981,9 @@
           <span class="fleur">⚜</span>
           <span class="line"></span>
         </div>
+        <p style="margin:10px 0 0;color:var(--gold2);font-family:Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;font-size:13px;">
+          Laissez les bons temps rouler
+        </p>
         <button class="red-button" onclick="document.getElementById('shop').scrollIntoView()">Shop Now ⚜</button>
       </div>
     </section>
