@@ -1245,7 +1245,7 @@
       document.getElementById('product-grid').innerHTML = products.map(product => {
         const hasSizes = Array.isArray(product.sizes) && product.sizes.length > 0;
         const priceText = hasSizes
-          ? product.sizes.map(size => `${size.label}: ${money(size.price)}`).join(' • ')
+          ? 'Choose Size'
           : money(product.price);
         const buttons = hasSizes
           ? `<div class="size-options">${product.sizes.map(size => `
