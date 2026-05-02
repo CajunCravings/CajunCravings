@@ -1179,34 +1179,25 @@
         id: 1,
         name: 'Classic Boudin Balls',
         subtitle: 'Original Boudin Balls',
+        price: 18,
         available: true,
-        img: 'boudinballs.jpg',
-        sizes: [
-          { label: 'Half Dozen', price: 9 },
-          { label: 'Dozen', price: 18 }
-        ]
+        img: 'boudinballs.jpg'
       },
       {
         id: 2,
         name: 'Crawfish Boudin Balls',
         subtitle: 'Boudin Balls with Crawfish + Spices',
+        price: 24,
         available: true,
-        img: 'boudinballs.jpg',
-        sizes: [
-          { label: 'Half Dozen', price: 12 },
-          { label: 'Dozen', price: 24 }
-        ]
+        img: 'boudinballs.jpg'
       },
       {
         id: 3,
         name: 'Hot Cheeto Boudin Balls',
         subtitle: 'Boudin Balls Rolled In Cheeto Dust',
+        price: 30,
         available: false,
-        img: 'boudinballs.jpg',
-        sizes: [
-          { label: 'Half Dozen', price: 15 },
-          { label: 'Dozen', price: 30 }
-        ]
+        img: 'boudinballs.jpg'
       },
       {
         id: 4,
@@ -1243,28 +1234,16 @@
 
     function renderProducts() {
       document.getElementById('product-grid').innerHTML = products.map(product => {
-        const hasSizes = Array.isArray(product.sizes) && product.sizes.length > 0;
-        const priceText = hasSizes
-          ? 'Choose Size'
-          : money(product.price);
-        const buttons = hasSizes
-          ? `<div class="size-options">${product.sizes.map(size => `
-              <button class="size-button" ${product.available ? '' : 'disabled'} onclick="addToCart(${product.id}, '${size.label}')">
-                ${size.label} — ${money(size.price)}
-              </button>
-            `).join('')}</div>`
-          : `<button class="small-red-button" ${product.available ? '' : 'disabled'} onclick="addToCart(${product.id})">
-              ${product.available ? 'Add to Cart ⚜' : 'Sold Out'}
-            </button>`;
-
         return `
           <article class="product-card">
             <img src="${imagePath(product.img)}" alt="${product.name}">
             <h3>${product.name}</h3>
             <p>${product.subtitle}</p>
-            <p class="price">${priceText}</p>
+            <p class="price">${money(product.price)}</p>
             <span class="availability ${product.available ? '' : 'sold-out'}">${product.available ? 'Available' : 'Sold Out'}</span>
-            ${buttons}
+            <button class="small-red-button" ${product.available ? '' : 'disabled'} onclick="addToCart(${product.id})">
+              ${product.available ? 'Add to Cart ⚜' : 'Sold Out'}
+            </button>
           </article>
         `;
       }).join('');
@@ -1279,22 +1258,16 @@
       `).join('');
     }
 
-    function addToCart(id, sizeLabel = '') {
+    function addToCart(id) {
       const product = products.find(item => item.id === id);
       if (!product || !product.available) return;
 
-      const size = product.sizes ? product.sizes.find(item => item.label === sizeLabel) : null;
-      const cartId = size ? `${product.id}-${size.label}` : `${product.id}`;
-      const cartName = size ? `${product.name} (${size.label})` : product.name;
-      const cartPrice = size ? size.price : product.price;
-
-      const existing = cart.find(item => item.cartId === cartId);
+      const existing = cart.find(item => item.id === product.id);
       if (existing) existing.qty++;
       else cart.push({
-        cartId,
         id: product.id,
-        name: cartName,
-        price: cartPrice,
+        name: product.name,
+        price: product.price,
         qty: 1
       });
 
@@ -1302,15 +1275,18 @@
       openCart();
     }
 
-    function updateQty(cartId, change) {
+    function updateQty(id, change) {
       cart = cart
-        .map(item => item.cartId === cartId ? { ...item, qty: item.qty + change } : item)
+        .map(item => item.id === id ? { ...item, qty: item.qty + change } : item)
+        .filter(item => item.qty > 0);
+      renderCart();
+    } : item)
         .filter(item => item.qty > 0);
       renderCart();
     }
 
-    function removeItem(cartId) {
-      cart = cart.filter(item => item.cartId !== cartId);
+    function removeItem(id) {
+      cart = cart.filter(item => item.id !== id);
       renderCart();
     }
 
@@ -1341,14 +1317,14 @@
           <div class="cart-item">
             <div class="cart-row">
               <strong>${item.name}</strong>
-              <button class="mini-button" onclick="removeItem('${item.cartId}')">×</button>
+              <button class="mini-button" onclick="removeItem(${item.id})">×</button>
             </div>
             <p>${money(item.price)} each</p>
             <div class="cart-row">
               <div class="qty">
-                <button class="mini-button" onclick="updateQty('${item.cartId}', -1)">-</button>
+                <button class="mini-button" onclick="updateQty(${item.id}, -1)">-</button>
                 <span>${item.qty}</span>
-                <button class="mini-button" onclick="updateQty('${item.cartId}', 1)">+</button>
+                <button class="mini-button" onclick="updateQty(${item.id}, 1)">+</button>
               </div>
               <strong>${money(item.price * item.qty)}</strong>
             </div>
