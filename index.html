@@ -377,33 +377,6 @@
       color: #b8a67b;
     }
 
-    .size-options {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 8px;
-      margin-top: 14px;
-    }
-
-    .size-button {
-      width: 100%;
-      border: 2px solid var(--gold);
-      background: linear-gradient(180deg, var(--red), var(--red2));
-      color: var(--parchment);
-      padding: 10px;
-      font-size: 14px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: .04em;
-    }
-
-    .size-button:disabled {
-      cursor: not-allowed;
-      opacity: .45;
-      filter: grayscale(.35);
-      background: #30221d;
-      color: #b8a67b;
-    }
-
     /* ===============================
        STORY
        =============================== */
@@ -1179,7 +1152,7 @@
         id: 1,
         name: 'Classic Boudin Balls',
         subtitle: 'Original Boudin Balls',
-        price: 18,
+        price: 12.99,
         available: true,
         img: 'boudinballs.jpg'
       },
@@ -1187,7 +1160,7 @@
         id: 2,
         name: 'Crawfish Boudin Balls',
         subtitle: 'Boudin Balls with Crawfish + Spices',
-        price: 24,
+        price: 14.99,
         available: true,
         img: 'boudinballs.jpg'
       },
@@ -1195,7 +1168,7 @@
         id: 3,
         name: 'Hot Cheeto Boudin Balls',
         subtitle: 'Boudin Balls Rolled In Cheeto Dust',
-        price: 30,
+        price: 16.99,
         available: false,
         img: 'boudinballs.jpg'
       },
@@ -1233,20 +1206,18 @@
     }
 
     function renderProducts() {
-      document.getElementById('product-grid').innerHTML = products.map(product => {
-        return `
-          <article class="product-card">
-            <img src="${imagePath(product.img)}" alt="${product.name}">
-            <h3>${product.name}</h3>
-            <p>${product.subtitle}</p>
-            <p class="price">${money(product.price)}</p>
-            <span class="availability ${product.available ? '' : 'sold-out'}">${product.available ? 'Available' : 'Sold Out'}</span>
-            <button class="small-red-button" ${product.available ? '' : 'disabled'} onclick="addToCart(${product.id})">
-              ${product.available ? 'Add to Cart ⚜' : 'Sold Out'}
-            </button>
-          </article>
-        `;
-      }).join('');
+      document.getElementById('product-grid').innerHTML = products.map(product => `
+        <article class="product-card">
+          <img src="${imagePath(product.img)}" alt="${product.name}">
+          <h3>${product.name}</h3>
+          <p>${product.subtitle}</p>
+          <p class="price">${money(product.price)}</p>
+          <span class="availability ${product.available ? '' : 'sold-out'}">${product.available ? 'Available' : 'Sold Out'}</span>
+          <button class="small-red-button" ${product.available ? '' : 'disabled'} onclick="addToCart(${product.id})">
+            ${product.available ? 'Add to Cart ⚜' : 'Sold Out'}
+          </button>
+        </article>
+      `).join('');
     }
 
     function renderSurveyItems() {
@@ -1262,14 +1233,9 @@
       const product = products.find(item => item.id === id);
       if (!product || !product.available) return;
 
-      const existing = cart.find(item => item.id === product.id);
+      const existing = cart.find(item => item.id === id);
       if (existing) existing.qty++;
-      else cart.push({
-        id: product.id,
-        name: product.name,
-        price: product.price,
-        qty: 1
-      });
+      else cart.push({ ...product, qty: 1 });
 
       renderCart();
       openCart();
@@ -1280,6 +1246,7 @@
         .map(item => item.id === id ? { ...item, qty: item.qty + change } : item)
         .filter(item => item.qty > 0);
       renderCart();
+    }
 
     function removeItem(id) {
       cart = cart.filter(item => item.id !== id);
