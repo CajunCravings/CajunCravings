@@ -1187,7 +1187,7 @@
       </div>
 
       <div id="order-success" style="display:none">
-        <p class="paragraph" id="order-status-message">Order request sent. Pay with Cash App or Venmo to confirm your pickup order.</p>
+        <
         <div class="payment-links">
           <a class="payment-link" href="https://cash.app/$mikemunoz96" target="_blank" rel="noopener">Cash App</a>
           <a class="payment-link" href="https://venmo.com/mikemunoz96" target="_blank" rel="noopener">Venmo</a>
@@ -1497,46 +1497,4 @@ Venmo: ${VENMO}
 Notes:
 ${notes || 'None'}
 
-Contact Number: ${ORDER_PHONE}`;
-    }
-
-    function placeOrder(event) {
-      if (!cart.length) {
-        event.preventDefault();
-        return;
-      }
-
-      const total = getOrderTotal();
-      const orderMessage = buildOrderMessage();
-
-      document.getElementById('order-details-field').value = orderMessage;
-      document.getElementById('order-total-field').value = money(total);
-
-      setTimeout(() => {
-        document.getElementById('order-form').style.display = 'none';
-        document.getElementById('order-success').style.display = 'block';
-        cart = [];
-        renderCart();
-        closeCart();
-      }, 700);
-    }
-
-    function finishOrder() {
-      document.getElementById('checkout-modal').classList.remove('open');
-      document.getElementById('order-form').style.display = 'block';
-      document.getElementById('order-success').style.display = 'none';
-    }
-
-    function submitSurvey() {
-      setTimeout(() => {
-        document.getElementById('survey-success').style.display = 'block';
-        document.getElementById('survey-form').reset();
-      }, 500);
-    }
-
-    renderProducts();
-    renderSurveyItems();
-    renderCart();
-  </script>
-</body>
-</html>
+Contact 
