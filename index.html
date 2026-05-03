@@ -1287,44 +1287,60 @@
 
     function renderProducts() {
       const productGrid = document.getElementById('product-grid');
+      productGrid.innerHTML = '';
 
-      productGrid.innerHTML = products.map(product => {
-        const hasSizes = Array.isArray(product.sizes) && product.sizes.length > 0;
-        let actionButtons = '';
-        let priceDisplay = money(product.price || 0);
+      products.forEach(product => {
+        const card = document.createElement('article');
+        card.className = 'product-card';
 
-        if (hasSizes) {
-          priceDisplay = 'Choose Size';
-          actionButtons = '<div class="size-options">';
+        const image = document.createElement('img');
+        image.src = imagePath(product.img);
+        image.alt = product.name;
+        card.appendChild(image);
+
+        const title = document.createElement('h3');
+        title.textContent = product.name;
+        card.appendChild(title);
+
+        const subtitle = document.createElement('p');
+        subtitle.textContent = product.subtitle;
+        card.appendChild(subtitle);
+
+        const price = document.createElement('p');
+        price.className = 'price';
+        price.textContent = product.sizes ? 'Choose Size' : money(product.price);
+        card.appendChild(price);
+
+        const availability = document.createElement('span');
+        availability.className = 'availability' + (product.available ? '' : ' sold-out');
+        availability.textContent = product.available ? 'Available' : 'Sold Out';
+        card.appendChild(availability);
+
+        if (product.sizes) {
+          const sizeWrap = document.createElement('div');
+          sizeWrap.className = 'size-options';
 
           product.sizes.forEach((size, index) => {
-            actionButtons += `
-              <button class="size-button" ${product.available ? '' : 'disabled'} onclick="addToCart(${product.id}, ${index})">
-                ${size.label} — ${money(size.price)}
-              </button>
-            `;
+            const btn = document.createElement('button');
+            btn.className = 'size-button';
+            btn.disabled = !product.available;
+            btn.textContent = `${size.label} — ${money(size.price)}`;
+            btn.addEventListener('click', () => addToCart(product.id, index));
+            sizeWrap.appendChild(btn);
           });
 
-          actionButtons += '</div>';
+          card.appendChild(sizeWrap);
         } else {
-          actionButtons = `
-            <button class="small-red-button" ${product.available ? '' : 'disabled'} onclick="addToCart(${product.id})">
-              ${product.available ? 'Add to Cart ⚜' : 'Sold Out'}
-            </button>
-          `;
+          const btn = document.createElement('button');
+          btn.className = 'small-red-button';
+          btn.disabled = !product.available;
+          btn.textContent = product.available ? 'Add to Cart ⚜' : 'Sold Out';
+          btn.addEventListener('click', () => addToCart(product.id));
+          card.appendChild(btn);
         }
 
-        return `
-          <article class="product-card">
-            <img src="${imagePath(product.img)}" alt="${product.name}">
-            <h3>${product.name}</h3>
-            <p>${product.subtitle}</p>
-            <p class="price">${priceDisplay}</p>
-            <span class="availability ${product.available ? '' : 'sold-out'}">${product.available ? 'Available' : 'Sold Out'}</span>
-            ${actionButtons}
-          </article>
-        `;
-      }).join('');
+        productGrid.appendChild(card);
+      });
     }
 
     function renderSurveyItems() {
