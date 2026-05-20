@@ -64,8 +64,42 @@
     function setPickupFieldsRequired(required){['pickup-location','pickup-day','pickup-time'].forEach(id=>{const field=document.getElementById(id);field.required=required;field.disabled=!required;if(!required)field.value=''})}
     function toggleDelivery(){const checked=getDeliverySelected();const address=document.getElementById('delivery-address');const note=document.getElementById('delivery-note');address.style.display=checked?'block':'none';note.style.display=checked?'block':'none';address.required=checked;setPickupFieldsRequired(!checked);if(!checked)address.value='';renderCart()}
     function buildOrderMessage(){const name=document.getElementById('customer-name').value;const phone=document.getElementById('customer-phone').value;const email=document.getElementById('customer-email').value;const day=document.getElementById('pickup-day').value;const location=document.getElementById('pickup-location').value;const time=document.getElementById('pickup-time').value;const delivery=getDeliverySelected();const address=document.getElementById('delivery-address').value;const notes=document.getElementById('order-notes').value;const subtotal=getCartSubtotal();const total=getOrderTotal();const items=cart.map(item=>`- ${item.name} x${item.qty} = ${money(item.price*item.qty)}`).join('\n');return `New Cajun Cravings Pickup Order\n\nCustomer: ${name}\nPhone: ${phone}\nEmail: ${email||'Not provided'}\nOrder Type: ${delivery?'Delivery':'Pickup'}\nPickup Location: ${delivery?'N/A':location}\nPickup Day: ${delivery?'N/A':day}\nPickup Time: ${delivery?'N/A':time}\nDelivery Requested: ${delivery?'Yes (+$5)':'No'}\nDelivery Address: ${delivery?(address||'Not provided'):'N/A'}\nOrder Cutoff: Saturday (last day to order)\n\nOrder:\n${items}\n\nSubtotal: ${money(subtotal)}\nDelivery Fee: ${delivery?money(DELIVERY_FEE):'$0.00'}\nTotal: ${money(total)}\n\nPayment Options:\nCash App: ${CASHAPP}\nVenmo: ${VENMO}\n\nNotes:\n${notes||'None'}\n\nContact Number: ${ORDER_PHONE}`}
-    function placeOrder(event){if(!cart.length){event.preventDefault();return}const total=getOrderTotal();const orderMessage=buildOrderMessage();const delivery=getDeliverySelected();const itemsText=cart.map(item=>`${item.name} x${item.qty} = ${money(item.price*item.qty)}`).join('
-');document.getElementById('order-details-field').value=orderMessage;document.getElementById('order-type-field').value=delivery?'Delivery':'Pickup';document.getElementById('pickup-location-field').value=delivery?'N/A':document.getElementById('pickup-location').value;document.getElementById('pickup-day-field').value=delivery?'N/A':document.getElementById('pickup-day').value;document.getElementById('pickup-time-field').value=delivery?'N/A':document.getElementById('pickup-time').value;document.getElementById('items-field').value=itemsText;document.getElementById('notes-field').value=document.getElementById('order-notes').value||'None';const emailField=document.getElementById('customer-email');if(!emailField.value.trim()){emailField.value='noemail@cajuncravings.net'}document.getElementById('order-total-field').value=money(total);document.getElementById('success-total').textContent=money(total);document.getElementById('order-copy').value=orderMessage;setTimeout(()=>{document.getElementById('order-form').style.display='none';document.getElementById('order-success').style.display='block';cart=[];renderCart();closeCart()},1200)}
+    function placeOrder(event){
+      if(!cart.length){
+        event.preventDefault();
+        return;
+      }
+
+      const total = getOrderTotal();
+      const orderMessage = buildOrderMessage();
+      const delivery = getDeliverySelected();
+      const itemsText = cart.map(item => `${item.name} x${item.qty} = ${money(item.price * item.qty)}`).join(' | ');
+      const notesValue = document.getElementById('order-notes').value || 'None';
+      const emailField = document.getElementById('customer-email');
+
+      if(!emailField.value.trim()){
+        emailField.value = 'noemail@cajuncravings.net';
+      }
+
+      document.getElementById('order-details-field').value = orderMessage;
+      document.getElementById('order-total-field').value = money(total);
+      document.getElementById('order-type-field').value = delivery ? 'Delivery' : 'Pickup';
+      document.getElementById('pickup-location-field').value = delivery ? 'N/A' : document.getElementById('pickup-location').value;
+      document.getElementById('pickup-day-field').value = delivery ? 'N/A' : document.getElementById('pickup-day').value;
+      document.getElementById('pickup-time-field').value = delivery ? 'N/A' : document.getElementById('pickup-time').value;
+      document.getElementById('items-field').value = itemsText;
+      document.getElementById('notes-field').value = notesValue;
+      document.getElementById('success-total').textContent = money(total);
+      document.getElementById('order-copy').value = orderMessage;
+
+      setTimeout(() => {
+        document.getElementById('order-form').style.display = 'none';
+        document.getElementById('order-success').style.display = 'block';
+        cart = [];
+        renderCart();
+        closeCart();
+      }, 1200);
+    }
     function finishOrder(){document.getElementById('checkout-modal').classList.remove('open');document.getElementById('order-form').style.display='block';document.getElementById('order-success').style.display='none'}
     function submitSurvey(){setTimeout(()=>{document.getElementById('survey-success').style.display='block';document.getElementById('survey-form').reset()},500)}
     renderProducts();renderSurveyItems();renderCart();
