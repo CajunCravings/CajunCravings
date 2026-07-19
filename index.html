@@ -107,6 +107,81 @@
 Selected Items: ${selected}
 
 Customer Suggestion: ${suggestion}`;setTimeout(()=>{document.getElementById('survey-success').style.display='block';document.getElementById('survey-form').reset()},500)}
+
+    // Private website analytics — separate from the order system.
+    (function trackPrivateVisit(){
+      const ANALYTICS_URL='https://script.google.com/macros/s/AKfycbyawmbOpoUaqX-01fkOvTJ8toM1OFu-9CcPkgcHZ4S5FIFfGJY93KGdhvA1pKfE4FRj/exec';
+      const VISIT_COOLDOWN_MS=30*60*1000;
+      const userAgent=navigator.userAgent||'Unknown';
+
+      // Skip common bots, automated browsers, and local file previews.
+      if(
+        location.protocol==='file:' ||
+        navigator.webdriver ||
+        /bot|crawler|spider|slurp|facebookexternalhit|preview/i.test(userAgent)
+      ){
+        return;
+      }
+
+      try{
+        let visitorId=localStorage.getItem('cc_private_visitor_id');
+
+        if(!visitorId){
+          visitorId=(window.crypto&&crypto.randomUUID)
+            ? crypto.randomUUID()
+            : 'cc-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2);
+          localStorage.setItem('cc_private_visitor_id',visitorId);
+        }
+
+        const page=location.pathname+(location.search||'');
+        const visitKey='cc_private_last_visit_'+page;
+        const lastVisit=Number(localStorage.getItem(visitKey)||0);
+        const now=Date.now();
+
+        // Do not count repeated refreshes of the same page within 30 minutes.
+        if(now-lastVisit<VISIT_COOLDOWN_MS){
+          return;
+        }
+
+        let source='Direct or unknown';
+        if(document.referrer){
+          try{
+            const host=new URL(document.referrer).hostname.replace(/^www\./,'');
+            if(/facebook\.com|fb\.com|l\.facebook\.com/.test(host)) source='Facebook';
+            else if(/instagram\.com/.test(host)) source='Instagram';
+            else if(/google\./.test(host)) source='Google';
+            else if(/bing\.com/.test(host)) source='Bing';
+            else source=host;
+          }catch(error){
+            source=document.referrer.substring(0,500);
+          }
+        }
+
+        const device=/ipad|tablet/i.test(userAgent)
+          ? 'Tablet'
+          : /mobile|iphone|android/i.test(userAgent)
+            ? 'Mobile'
+            : 'Desktop';
+
+        const params=new URLSearchParams({
+          page,
+          referrer:source,
+          visitor:visitorId,
+          device:device+' — '+userAgent.substring(0,350)
+        });
+
+        fetch(ANALYTICS_URL+'?'+params.toString(),{
+          method:'GET',
+          mode:'no-cors',
+          keepalive:true
+        }).catch(()=>{});
+
+        localStorage.setItem(visitKey,String(now));
+      }catch(error){
+        // Analytics must never interfere with shopping or checkout.
+      }
+    })();
+
     renderProducts();renderSurveyItems();renderCart();
   </script>
 </body>
