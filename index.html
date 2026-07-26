@@ -125,11 +125,11 @@ Customer Suggestion: ${suggestion}`;setTimeout(()=>{document.getElementById('sur
       const VISIT_COOLDOWN_MS=30*60*1000;
       const userAgent=navigator.userAgent||'Unknown';
 
-      // Skip common bots, automated browsers, and local file previews.
+      // Skip local previews, automated browsers, bots, crawlers, and link-preview services.
       if(
         location.protocol==='file:' ||
         navigator.webdriver ||
-        /bot|crawler|spider|slurp|facebookexternalhit|preview/i.test(userAgent)
+        /bot|crawler|spider|slurp|preview|facebookexternalhit|facebot|googlebot|bingbot|yandex|baiduspider|duckduckbot|discordbot|slackbot|telegrambot|whatsapp|pinterestbot|linkedinbot|twitterbot|applebot|headlesschrome|lighthouse/i.test(userAgent)
       ){
         return;
       }
@@ -144,27 +144,49 @@ Customer Suggestion: ${suggestion}`;setTimeout(()=>{document.getElementById('sur
           localStorage.setItem('cc_private_visitor_id',visitorId);
         }
 
-        const page=location.pathname+(location.search||'');
+        // Store only the clean page path. Facebook and other tracking parameters
+        // such as fbclid, gclid, and utm_* are intentionally excluded.
+        const page=location.pathname||'/';
         const visitKey='cc_private_last_visit_'+page;
+        const inFlightKey='cc_private_visit_inflight_'+page;
         const lastVisit=Number(localStorage.getItem(visitKey)||0);
         const now=Date.now();
 
-        // Do not count repeated refreshes of the same page within 30 minutes.
-        if(now-lastVisit<VISIT_COOLDOWN_MS){
+        // Stop repeated refreshes and duplicate requests from the same page.
+        if(
+          now-lastVisit<VISIT_COOLDOWN_MS ||
+          sessionStorage.getItem(inFlightKey)==='1'
+        ){
           return;
         }
 
-        let source='Direct or unknown';
-        if(document.referrer){
+        const query=new URLSearchParams(location.search);
+        let source='Direct';
+
+        // Use campaign parameters first because some apps hide the referrer.
+        const campaignSource=(query.get('utm_source')||'').toLowerCase();
+        if(query.has('fbclid')||campaignSource.includes('facebook')) source='Facebook';
+        else if(campaignSource.includes('instagram')) source='Instagram';
+        else if(query.has('gclid')||campaignSource.includes('google')) source='Google';
+        else if(campaignSource.includes('tiktok')) source='TikTok';
+        else if(campaignSource.includes('reddit')) source='Reddit';
+        else if(campaignSource.includes('discord')) source='Discord';
+        else if(campaignSource.includes('bing')) source='Bing';
+        else if(document.referrer){
           try{
-            const host=new URL(document.referrer).hostname.replace(/^www\./,'');
+            const host=new URL(document.referrer).hostname.replace(/^www\./,'').toLowerCase();
             if(/facebook\.com|fb\.com|l\.facebook\.com/.test(host)) source='Facebook';
             else if(/instagram\.com/.test(host)) source='Instagram';
             else if(/google\./.test(host)) source='Google';
             else if(/bing\.com/.test(host)) source='Bing';
+            else if(/tiktok\.com/.test(host)) source='TikTok';
+            else if(/reddit\.com/.test(host)) source='Reddit';
+            else if(/discord\.com|discordapp\.com/.test(host)) source='Discord';
+            else if(/github\.com/.test(host)) source='GitHub';
+            else if(/yahoo\.com/.test(host)) source='Yahoo';
             else source=host;
           }catch(error){
-            source=document.referrer.substring(0,500);
+            source='Other';
           }
         }
 
@@ -174,20 +196,42 @@ Customer Suggestion: ${suggestion}`;setTimeout(()=>{document.getElementById('sur
             ? 'Mobile'
             : 'Desktop';
 
+        let browser='Other';
+        if(/OPR\//.test(userAgent)) browser='Opera';
+        else if(/Edg\//.test(userAgent)) browser='Edge';
+        else if(/CriOS\//.test(userAgent)) browser='Chrome iOS';
+        else if(/Chrome\//.test(userAgent)) browser='Chrome';
+        else if(/FxiOS\//.test(userAgent)) browser='Firefox iOS';
+        else if(/Firefox\//.test(userAgent)) browser='Firefox';
+        else if(/Safari\//.test(userAgent)) browser='Safari';
+
+        let os='Other';
+        if(/iPhone|iPad|iPod/.test(userAgent)) os='iOS';
+        else if(/Android/.test(userAgent)) os='Android';
+        else if(/Windows NT 10\.0/.test(userAgent)) os='Windows';
+        else if(/Mac OS X/.test(userAgent)) os='macOS';
+        else if(/Linux/.test(userAgent)) os='Linux';
+
         const params=new URLSearchParams({
           page,
           referrer:source,
           visitor:visitorId,
-          device:device+' — '+userAgent.substring(0,350)
+          device,
+          browser,
+          os
         });
+
+        // Save the cooldown before sending so rapid duplicate executions cannot pass.
+        localStorage.setItem(visitKey,String(now));
+        sessionStorage.setItem(inFlightKey,'1');
 
         fetch(ANALYTICS_URL+'?'+params.toString(),{
           method:'GET',
           mode:'no-cors',
           keepalive:true
-        }).catch(()=>{});
-
-        localStorage.setItem(visitKey,String(now));
+        }).catch(()=>{}).finally(()=>{
+          sessionStorage.removeItem(inFlightKey);
+        });
       }catch(error){
         // Analytics must never interfere with shopping or checkout.
       }
